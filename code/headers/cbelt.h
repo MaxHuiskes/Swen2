@@ -2,6 +2,7 @@
 #define CBELT_H
 
 #include "ibelt.h"
+#include <QEvent>
 
 
 class cBelt : iBelt
@@ -20,3 +21,5 @@ public:
 };
 
 #endif // CBELT_H
+
+
