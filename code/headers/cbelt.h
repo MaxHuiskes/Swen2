@@ -11,11 +11,9 @@ public:
     cBelt();
 
 public:
-    int belt;
-    int maxBlock;
-    int sensor;
-    int motor;
-    int pushrot;
+    int belt = 0;
+    int block = 0;
+
 
     void move(int) override;
 };

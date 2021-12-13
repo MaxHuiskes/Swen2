@@ -13,9 +13,142 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="beltNr_1">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>20</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Convayer Belt number:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="blockCount_1">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>50</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Block count on belt:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sensorValue_1">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>80</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sensor value:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="beltNr">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Convayer Belt number:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="blockCount">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>50</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Block count on belt:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sensorValue">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sensor value:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="beltNr_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>20</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Convayer Belt number:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="blockCoutn_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>50</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Block count on belt:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sensorValue_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>80</y>
+      <width>181</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sensor value:</string>
+    </property>
+   </widget>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuuser_intrerface_DTX_simulation">
+    <property name="title">
+     <string>user intrerface DTX simulation</string>
+    </property>
+   </widget>
+   <addaction name="menuuser_intrerface_DTX_simulation"/>
+  </widget>
  </widget>
  <resources/>
  <connections/>
