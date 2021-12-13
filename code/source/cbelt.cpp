@@ -8,7 +8,7 @@ cBelt::cBelt()
     pushrot = 0;
 }
 
-void cBelt::move(int i){
+//void cBelt::move(int i){
 
-    belt = i;
-}
+//    belt = i;
+//}

@@ -9,26 +9,28 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    cbelt.cpp \
-    cblock.cpp \
-    cmotor.cpp \
-    cpushrot.cpp \
-    ibelt.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    sensor.cpp
+    source/cbelt.cpp \
+    source/cblock.cpp \
+    source/cmotor.cpp \
+    source/cpushrot.cpp \
+    source/ibelt.cpp \
+    source/main.cpp \
+    source/mainwindow.cpp \
+    source/sensor.cpp
 
 HEADERS += \
-    cbelt.h \
-    cblock.h \
-    cmotor.h \
-    cpushrot.h \
-    ibelt.h \
-    mainwindow.h \
-    sensor.h
+    headers/cbelt.h \
+    headers/cblock.h \
+    headers/cmotor.h \
+    headers/cpushrot.h \
+    headers/ibelt.h \
+    headers/mainwindow.h \
+    headers/sensor.h
 
 FORMS += \
-    mainwindow.ui
+    ui/mainwindow.ui
+
+INCLUDEPATH+=$$PWD/headers/
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

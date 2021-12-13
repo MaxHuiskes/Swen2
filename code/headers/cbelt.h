@@ -16,7 +16,7 @@ public:
     int motor;
     int pushrot;
 
-    void move(int) override;
+//    void move(int) override;
 };
 
 #endif // CBELT_H
