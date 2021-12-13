@@ -4,10 +4,11 @@
 class iBelt
 {
 public:
-     iBelt();
+    iBelt(){}
+     virtual ~iBelt(){}
 
 public:
-    virtual void move(int);
+    virtual void move(int) = 0;
 };
 
 #endif // IBELT_H
