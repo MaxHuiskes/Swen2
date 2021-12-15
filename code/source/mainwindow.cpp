@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainW
     //QString sensorValue = "Sensor Value " + QString::number(sensor);
 
 
-    ui->label->setText(beltinfo);
-    ui->label_2->setText(blockCount);
-    //ui->label_3->setText(sensorValue);
+    ui->beltNr->setText(beltinfo);
+    ui->blockCount->setText(blockCount);
+    //ui->sensorValue->setText(sensorValue);
 }
 
 MainWindow::~MainWindow()
