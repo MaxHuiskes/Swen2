@@ -3,10 +3,14 @@
 
 #include <QMainWindow>
 #include "cbelt.h"
+//#include "quibelt.h"
+class QUIBelt;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -19,5 +23,7 @@ public:
 private:
     Ui::MainWindow *ui;
     cBelt belt;
+
+    QUIBelt* mBelt;
 };
 #endif // MAINWINDOW_H

@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     source/cbelt.cpp \
+    source/quibelt.cpp \
     source/cblock.cpp \
     source/cmotor.cpp \
     source/cpushrot.cpp \
@@ -25,7 +26,8 @@ HEADERS += \
     headers/cpushrot.h \
     headers/ibelt.h \
     headers/mainwindow.h \
-    headers/sensor.h
+    headers/sensor.h \
+    headers/quibelt.h
 
 FORMS += \
     ui/mainwindow.ui
