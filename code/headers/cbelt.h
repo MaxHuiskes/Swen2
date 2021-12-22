@@ -14,8 +14,8 @@ public:
     int beltnr = 0;
 
     void toggleMotor();
-    void setBlock(){block = 1;};
-    void setBelt(int nr){beltnr = nr;};
+    void setBlock();
+    void setBelt(int nr);
 };
 
 #endif // CBELT_H

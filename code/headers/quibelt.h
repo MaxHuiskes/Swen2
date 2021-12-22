@@ -9,11 +9,15 @@ class QUIBelt : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QUIBelt(QWidget *parent = nullptr, cBelt *belt = nullptr);
+    explicit QUIBelt(QWidget *parent, cBelt *belt);
+    void button();
+
+
 
 private:
     QLabel mLabel;
-    cBelt *beltcount;
+    cBelt  *mBelt;
+
 
 signals:
 
