@@ -5,17 +5,17 @@
 #include <QEvent>
 
 
-class cBelt : iBelt
+class cBelt
 {
 public:
     cBelt();
 
-public:
-    int belt = 0;
     int block = 0;
+    int beltnr = 0;
 
-
-    void move(int) override;
+    void toggleMotor();
+    void setBlock(){block = 1;};
+    void setBelt(int nr){beltnr = nr;};
 };
 
 #endif // CBELT_H
