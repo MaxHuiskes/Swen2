@@ -4,9 +4,8 @@ cBelt::cBelt()
 {
 
 }
-
-void cBelt::move(int i){
-
-    belt = i;
+void toggleMotor(){
+    // motor aansturing
 }
+
 

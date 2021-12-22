@@ -17,13 +17,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, cBelt *belt = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    cBelt belt;
+    cBelt *beltt1;
 
-    QUIBelt* mBelt;
 };
 #endif // MAINWINDOW_H

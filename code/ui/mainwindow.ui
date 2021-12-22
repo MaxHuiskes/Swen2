@@ -14,121 +14,27 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="beltNr_1">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>639</x>
+      <y>500</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set block on first belt</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
       <y>20</y>
-      <width>181</width>
-      <height>16</height>
+      <width>120</width>
+      <height>71</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>Convayer Belt number:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="blockCount_1">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>50</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Block count on belt:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="sensorValue_1">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>80</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sensor value:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="beltNr">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Convayer Belt number:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="blockCount">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Block count on belt:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="sensorValue">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sensor value:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="beltNr_2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>20</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Convayer Belt number:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="blockCoutn_2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>50</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Block count on belt:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="sensorValue_2">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>80</y>
-      <width>181</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sensor value:</string>
     </property>
    </widget>
   </widget>

@@ -5,10 +5,7 @@ cblock::cblock()
 
 }
 
-void cblock::block(int count, int mat){
-    blockCount = count;
-    matiraal = mat;
-}
+
 
 int cblock::order(){
     for (int i = 0; i < blockCount; i++){

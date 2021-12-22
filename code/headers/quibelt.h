@@ -3,17 +3,18 @@
 
 #include <QWidget>
 #include <QLabel>
+#include "cbelt.h"
+
 
 class QUIBelt : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QUIBelt(QWidget *parent = nullptr);
+    explicit QUIBelt(QWidget *parent = nullptr, cBelt *belt = nullptr);
 
 private:
     QLabel mLabel;
-
-
+    cBelt *beltcount;
 
 signals:
 
