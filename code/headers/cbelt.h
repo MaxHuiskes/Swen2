@@ -6,23 +6,22 @@
 #include "cpushrot.h"
 #include "cmotor.h"
 #include <QEvent>
+#include <QString>
 
 
-class cBelt : iBelt
+class cBelt
 {
 public:
-    cBelt(int, int);
+    cBelt();
 
-public:
-    int belt; //nummer van de band
-    int maxBlock; //maximaal aantal blokjes op de band
+    QString block = "No block";
+    int beltnr = 0;
+    int sensor = 0;
 
-    void move(int) override; //aan/uit van band en richting
+    void toggleMotor();
+    void setBlock(QString);
+    void setBelt(int nr);
 
-private:
-    sensor sensor;
-    cmotor motor;
-    //niet elke band heeft een pushrod en meeste banden hebben maar 1 sensor en motor
 };
 
 #endif // CBELT_H

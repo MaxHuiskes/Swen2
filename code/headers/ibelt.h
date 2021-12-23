@@ -4,10 +4,13 @@
 class iBelt
 {
 public:
-     iBelt();
+    iBelt(){}
+     virtual ~iBelt(){}
 
 public:
-    virtual void move(int); //aan/uit van motor en richting
+
+    virtual void move(int) = 0; //aan/uit van motor en richting
+
 };
 
 #endif // IBELT_H

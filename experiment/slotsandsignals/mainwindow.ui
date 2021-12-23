@@ -14,23 +14,8 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar"/>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuuser_intrerface_DTX_simulation">
-    <property name="title">
-     <string>user intrerface DTX simulation</string>
-    </property>
-   </widget>
-   <addaction name="menuuser_intrerface_DTX_simulation"/>
-  </widget>
  </widget>
  <resources/>
  <connections/>

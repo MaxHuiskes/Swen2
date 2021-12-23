@@ -1,11 +1,21 @@
-#include "headers/cbelt.h"
+#include "cbelt.h"
 
-cBelt::cBelt(int maxBlok, int bandNr)
+cBelt::cBelt()
 {
-    maxBlock = maxBlok; //max blokjes assignen bij maken van belt
-    belt = bandNr; //nummer van band krijgen bij maken van belt
+
+}
+void toggleMotor(){
+    // motor aansturing
 }
 
-void cBelt::move(int a){
-    motor.moveMotor(a); //beweegt de motor die bij die belt hoort
+void cBelt::setBlock(QString blck){
+   if (sensor == 0){
+      block = blck;
+   }
+
 }
+
+void cBelt::setBelt(int nr){
+    beltnr = nr;
+}
+

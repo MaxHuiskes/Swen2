@@ -1,14 +1,22 @@
 #include "mainwindow.h"
+
 #include <QApplication>
-#include <QPushButton>
-#include "quibelt.h"
-#include "cbelt.h"
+#include <qobject.h>
+#include <QEvent>
+#include <qevent.h>
+
+#include "belt.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w(nullptr);
 
+    belt belt2;
+    belt belt3;
+
+    MainWindow w;
     w.show();
     return a.exec();
 }
+
+
