@@ -1,19 +1,10 @@
-#include "cblock.h"
+#include "headers/cblock.h"
 
-cblock::cblock()
+cblock::cblock(int mat, int hgte)
 {
 
+ materiaal = mat; //definen van materiaal bij het maken van een blokje
+ hoogte = hgte; //definen van hoogte bij het maken van een blokje
 }
 
 
-
-int cblock::order(){
-    for (int i = 0; i < blockCount; i++){
-        return i;
-    }
-    if(blockCount == '0'){
-        return 0;
-    } else {
-        return -1;
-    }
-}

@@ -5,14 +5,16 @@
 class cblock
 {
 public:
-    cblock();
+    cblock(int, int);
 
 public:
+
     int blockCount;
     int materiaal;
 
     void block(int,int);
     int order();
+
 };
 
 #endif // CBLOCK_H

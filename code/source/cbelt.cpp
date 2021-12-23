@@ -20,3 +20,4 @@ void cBelt::setBelt(int nr){
 }
 
 // modbus TCP voor connectie tussen controller en ui
+

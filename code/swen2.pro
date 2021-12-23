@@ -13,6 +13,7 @@ SOURCES += \
     source/cbelt.cpp \
     source/quibelt.cpp \
     source/cblock.cpp \
+    source/clift.cpp \
     source/cmotor.cpp \
     source/cpushrot.cpp \
     source/ibelt.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 HEADERS += \
     headers/cbelt.h \
     headers/cblock.h \
+    headers/clift.h \
     headers/cmotor.h \
     headers/cpushrot.h \
     headers/ibelt.h \
