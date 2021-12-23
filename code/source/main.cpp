@@ -28,9 +28,15 @@ int main(int argc, char *argv[])
     invoerband3 = new QUIBelt(&w, belt3);
     invoerband3->setGeometry(290,30,200,200);
 
+<<<<<<< HEAD
     QPushButton *button = new QPushButton("Set block on first belt", &w);
     button->connect(button, SIGNAL(clicked), &w, SLOT(invoerband1->setButton));
     button->setGeometry(639,500,121,41);
+=======
+    QUIBelt* invoerband;
+    invoerband = new QUIBelt(&w);
+    invoerband->setGeometry(100,100,200,200);
+>>>>>>> 859f368ad50eae11180f0528618ff21e07127aec
 
     w.show();
     return a.exec();
