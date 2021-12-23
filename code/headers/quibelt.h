@@ -6,22 +6,17 @@
 
 class cBelt;
 
-
 class QUIBelt : public QWidget
 {
     Q_OBJECT
 public:
     explicit QUIBelt(QWidget *parent, cBelt *belt);
 
-    void setButton();
-
-
+    void setButton(QString);
 
 private:
     QLabel mLabel;
     cBelt  *mBelt;
-
-
 
 signals:
 
