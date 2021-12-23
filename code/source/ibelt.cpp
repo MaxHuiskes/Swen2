@@ -1,5 +1,2 @@
-#include "ibelt.h"
+#include "headers/ibelt.h"
 
-iBelt::iBelt(){
-
-}

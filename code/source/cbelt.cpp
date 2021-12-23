@@ -2,13 +2,24 @@
 
 cBelt::cBelt()
 {
-    maxBlock = 8;
-    sensor = 10;
-    motor = 2;
-    pushrot = 0;
+
+}
+void cBelt::toggleMotor(){
+    // motor aansturing
 }
 
-//void cBelt::move(int i){
 
-//    belt = i;
-//}
+void cBelt::setBlock(QString blck){
+   if (sensor == 0){
+      block = blck;
+   }
+}
+
+void cBelt::setBelt(int nr){
+    beltnr = nr;
+    nextBelt = beltnr + 1;
+}
+
+// modbus TCP voor connectie tussen controller en ui
+
+

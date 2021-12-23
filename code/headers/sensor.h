@@ -7,9 +7,7 @@ class sensor
 public:
     sensor();
 public:
-    int sen;
-
-    int detect();
+    bool detect(); //geeft 1 terug als de sensor iets detect
 };
 
 #endif // SENSOR_H
