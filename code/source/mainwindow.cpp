@@ -40,32 +40,32 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     checkbox = new QCheckBox("Low plastic", this);
-    checkbox->setGeometry(439,470,121,19);
+    checkbox->setGeometry(439,500,121,19);
     checkbox->connect(checkbox, &QPushButton::pressed, this , &MainWindow::on_checkBox_clicked);
     checkbox->setCheckable(true);
 
     checkbox1 = new QCheckBox("Middle plastic", this);
-    checkbox1->setGeometry(439,485,121,19);
+    checkbox1->setGeometry(439,515,121,19);
     checkbox1->connect(checkbox1, &QPushButton::pressed, this , &MainWindow::on_checkBox1_clicked);
     checkbox1->setCheckable(true);
 
     checkbox2 = new QCheckBox("High plastic", this);
-    checkbox2->setGeometry(439,500,121,19);
+    checkbox2->setGeometry(439,530,121,19);
     checkbox2->connect(checkbox2, &QPushButton::pressed, this , &MainWindow::on_checkBox2_clicked);
     checkbox2->setCheckable(true);
 
     checkbox3 = new QCheckBox("Low metal", this);
-    checkbox3->setGeometry(539,470,121,19);
+    checkbox3->setGeometry(539,500,121,19);
     checkbox3->connect(checkbox3, &QPushButton::pressed, this , &MainWindow::on_checkBox3_clicked);
     checkbox3->setCheckable(true);
 
     checkbox4 = new QCheckBox("Middle metal", this);
-    checkbox4->setGeometry(539,485,121,19);
+    checkbox4->setGeometry(539,515,121,19);
     checkbox4->connect(checkbox4, &QPushButton::pressed, this , &MainWindow::on_checkBox4_clicked);
     checkbox4->setCheckable(true);
 
     checkbox5 = new QCheckBox("High metal", this);
-    checkbox5->setGeometry(539,500,121,19);
+    checkbox5->setGeometry(539,530,121,19);
     checkbox5->connect(checkbox5, &QPushButton::pressed, this , &MainWindow::on_checkBox5_clicked);
     checkbox5->setCheckable(true);
 
