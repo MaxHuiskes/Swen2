@@ -33,11 +33,9 @@ MainWindow::MainWindow(QWidget *parent)
     invoerband3 = new QUIBelt(this, belt3);
     invoerband3->setGeometry(290,30,200,200);
 
-
     QPushButton *button = new QPushButton("Set block on first belt", this);
     button->connect(button, &QPushButton::pressed, this, &MainWindow::on_clicked);
     button->setGeometry(639,500,121,41);
-
 
     checkbox = new QCheckBox("Low plastic", this);
     checkbox->setGeometry(439,500,121,19);
@@ -76,8 +74,6 @@ MainWindow::MainWindow(QWidget *parent)
     check->addButton(checkbox3);
     check->addButton(checkbox4);
     check->addButton(checkbox5);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -87,7 +83,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_clicked()
 {
-   mQUIbelt->setButton(blck);
+    mQUIbelt->setButton(blck);
 }
 
 void MainWindow::on_checkBox_clicked()
@@ -97,11 +93,11 @@ void MainWindow::on_checkBox_clicked()
 
 void MainWindow::on_checkBox1_clicked()
 {
-        blck = "Middle plastic";
+    blck = "Middle plastic";
 }
 void MainWindow::on_checkBox2_clicked()
 {
-        blck = "High plastic";
+    blck = "High plastic";
 }
 void MainWindow::on_checkBox3_clicked()
 {
@@ -110,10 +106,10 @@ void MainWindow::on_checkBox3_clicked()
 
 void MainWindow::on_checkBox4_clicked()
 {
-        blck = "Middle metal";
+    blck = "Middle metal";
 }
 
 void MainWindow::on_checkBox5_clicked()
 {
-        blck = "High metal";
+    blck = "High metal";
 }

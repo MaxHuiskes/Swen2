@@ -9,7 +9,7 @@ public:
 
 public:
     int blockCount;
-    int matiraal;
+    int materiaal;
 
     void block(int,int);
     int order();
