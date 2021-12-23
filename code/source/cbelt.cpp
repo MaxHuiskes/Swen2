@@ -18,3 +18,4 @@ void cBelt::setBlock(QString blck){
 void cBelt::setBelt(int nr){
     beltnr = nr;
 }
+

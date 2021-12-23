@@ -2,6 +2,9 @@
 #define CBELT_H
 
 #include "ibelt.h"
+#include "sensor.h"
+#include "cpushrot.h"
+#include "cmotor.h"
 #include <QEvent>
 #include <QString>
 
@@ -18,6 +21,7 @@ public:
     void toggleMotor();
     void setBlock(QString);
     void setBelt(int nr);
+
 };
 
 #endif // CBELT_H

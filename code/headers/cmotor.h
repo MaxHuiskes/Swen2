@@ -6,10 +6,8 @@ class cmotor
 {
 public:
     cmotor();
-
 public:
-    int motor;
-    void moveMotor(int);
+    void moveMotor(int); // bewegen van motor en richting
 };
 
 #endif // CMOTOR_H

@@ -7,8 +7,7 @@ class cpushrot
 public:
     cpushrot();
 public:
-    int pushrot;
-    int move(int);
+    void move(); //beweegt pushrod heen en weer
 };
 
 #endif // CPUSHROT_H

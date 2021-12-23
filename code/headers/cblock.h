@@ -5,14 +5,11 @@
 class cblock
 {
 public:
-    cblock();
+    cblock(int, int);
 
 public:
-    int blockCount;
-    int matiraal;
-
-    void block(int,int);
-    int order();
+    int hoogte; //hoogte van het blokje
+    int materiaal; //materiaal van het blokje
 };
 
 #endif // CBLOCK_H
