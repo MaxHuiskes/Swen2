@@ -3,6 +3,7 @@
 
 #include "ibelt.h"
 #include <QEvent>
+#include <QString>
 
 
 class cBelt
@@ -10,12 +11,13 @@ class cBelt
 public:
     cBelt();
 
-    int block = 0;
+    QString block = "No block";
     int beltnr = 0;
+    int sensor = 0;
 
     void toggleMotor();
-    void setBlock(){block = 1;};
-    void setBelt(int nr){beltnr = nr;};
+    void setBlock(QString);
+    void setBelt(int nr);
 };
 
 #endif // CBELT_H
