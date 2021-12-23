@@ -1,4 +1,5 @@
-#include "headers/quibelt.h"
+#include "quibelt.h"
+#include "cbelt.h"
 
 QUIBelt::QUIBelt(QWidget *parent, cBelt *belt)
     : QWidget(parent)
@@ -10,7 +11,7 @@ QUIBelt::QUIBelt(QWidget *parent, cBelt *belt)
     mLabel.setText(beltinfo);
 }
 
-void QUIBelt::button(){
+void QUIBelt::setButton(){
     mBelt->setBlock();
 
     mLabel.setText(" ");

@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     invoerband3->setGeometry(290,30,200,200);
 
     QPushButton *button = new QPushButton("Set block on first belt", &w);
-    button->connect(button, SIGNAL(clicked()), &w, SLOT(invoerband1->button()));
+    button->connect(button, SIGNAL(clicked), &w, SLOT(invoerband1->setButton));
     button->setGeometry(639,500,121,41);
 
     w.show();
