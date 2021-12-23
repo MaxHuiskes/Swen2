@@ -9,7 +9,7 @@
 #include <QString>
 
 
-class cBelt
+class cBelt : iBelt
 {
 public:
     cBelt();
@@ -17,6 +17,7 @@ public:
     QString block = "No block";
     int beltnr = 0;
     int sensor = 0;
+    int nextBelt = 0;
 
     void toggleMotor();
     void setBlock(QString);

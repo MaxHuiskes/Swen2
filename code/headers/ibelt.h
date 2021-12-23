@@ -1,5 +1,6 @@
 #ifndef IBELT_H
 #define IBELT_H
+#include <QString>
 
 class iBelt
 {
@@ -9,7 +10,9 @@ public:
 
 public:
 
-    virtual void move(int) = 0; //aan/uit van motor en richting
+    virtual void toggleMotor() = 0;
+    virtual void setBlock(QString) = 0;
+    virtual void setBelt(int nr) = 0;
 
 };
 

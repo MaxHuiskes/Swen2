@@ -8,8 +8,13 @@ public:
     cblock(int, int);
 
 public:
-    int hoogte; //hoogte van het blokje
-    int materiaal; //materiaal van het blokje
+
+    int blockCount;
+    int materiaal;
+
+    void block(int,int);
+    int order();
+
 };
 
 #endif // CBLOCK_H
