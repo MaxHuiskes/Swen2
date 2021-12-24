@@ -1,13 +1,21 @@
 #ifndef CMOTOR_H
 #define CMOTOR_H
-
-
-class cmotor
+#include  <QObject>
+class cblock;
+class cmotor : public QObject
 {
+   // Q_OBJECT
 public:
-    cmotor();
-public:
-    void moveMotor(int); // bewegen van motor en richting
+    cmotor(cblock *);
+    virtual ~cmotor() {}
+    void moveMotor(); // bewegen van motor en richting
+
+public slots:
+    void endTimer();
+
+private:
+    cblock *blck;
 };
+
 
 #endif // CMOTOR_H

@@ -5,14 +5,16 @@
 #include <QLabel>
 
 class cBelt;
+class cblock;
 
 class QUIBelt : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QUIBelt(QWidget *parent, cBelt *belt);
-
-    void setButton(QString);
+    explicit QUIBelt(QWidget *parent);
+    void setBelt(cBelt*);
+    void setButton(cblock*);
+    void setLabel(cblock*);
 
 private:
     QLabel mLabel;

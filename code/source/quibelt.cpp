@@ -1,12 +1,15 @@
 #include "headers/quibelt.h"
 #include "headers/cbelt.h"
-
-QUIBelt::QUIBelt(QWidget *parent, cBelt *belt)
+#include "cblock.h"
+QUIBelt::QUIBelt(QWidget *parent)
     : QWidget(parent)
     , mLabel (this  )
-    , mBelt  (belt  )
 {
 
+
+}
+void QUIBelt::setBelt(cBelt *blt){
+    mBelt = blt;
     QString beltinfo ="Conveyor belt number " +
                       QString::number(mBelt->beltnr) + '\n' +
                       "Block on Conveyor belt: " +
@@ -14,8 +17,17 @@ QUIBelt::QUIBelt(QWidget *parent, cBelt *belt)
 
     mLabel.setText(beltinfo);
 }
+void QUIBelt::setButton(cblock *block){
+    mBelt->setBlock(block);
 
-void QUIBelt::setButton(QString block){
+    QString beltinfo ="Conveyor belt number " +
+                      QString::number(mBelt->beltnr) +
+                      '\n' + "Block on Conveyor belt: " +
+                      '\n' + mBelt->block;
+
+    mLabel.setText(beltinfo);
+}
+void QUIBelt::setLabel(cblock *block){
     mBelt->setBlock(block);
 
     QString beltinfo ="Conveyor belt number " +

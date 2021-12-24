@@ -1,16 +1,20 @@
 #include "cbelt.h"
+#include "cblock.h"
 
 cBelt::cBelt()
 {
 
 }
 void cBelt::toggleMotor(){
-    // motor aansturing
+    cmotor motor(bl);
+    motor.moveMotor();
 }
 
-void cBelt::setBlock(QString blck){
+void cBelt::setBlock(cblock * blck){
    if (sensor == 0){
-      block = blck;
+      block = blck->print;
+      bl = blck;
+      toggleMotor();
    }
 }
 

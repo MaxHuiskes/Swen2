@@ -8,19 +8,20 @@
 #include <QEvent>
 #include <QString>
 
-
+class cblock;
 class cBelt : iBelt
 {
 public:
     cBelt();
 
     QString block = "No block";
+    cblock *bl;
     int beltnr = 0;
     int sensor = 0;
     int nextBelt = 0;
 
     void toggleMotor();
-    void setBlock(QString);
+    void setBlock(cblock *blck);
     void setBelt(int nr);
 
 };

@@ -16,7 +16,6 @@ SOURCES += \
     source/clift.cpp \
     source/cmotor.cpp \
     source/cpushrot.cpp \
-    source/ibelt.cpp \
     source/main.cpp \
     source/mainwindow.cpp \
     source/sensor.cpp
