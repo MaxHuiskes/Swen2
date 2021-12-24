@@ -1,7 +1,7 @@
 #ifndef IBELT_H
 #define IBELT_H
 #include <QString>
-
+class cblock;
 class iBelt
 {
 public:
@@ -12,7 +12,7 @@ public:
 
 
     virtual void toggleMotor() = 0;
-    virtual void setBlock(QString) = 0;
+    virtual void setBlock(cblock * blck) = 0;
     virtual void setBelt(int nr) = 0;
 
 

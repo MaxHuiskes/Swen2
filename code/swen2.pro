@@ -9,7 +9,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-
     source/quibelt.cpp \
     source/cbelt.cpp \
     source/quibelt.cpp \
@@ -17,7 +16,6 @@ SOURCES += \
     source/clift.cpp \
     source/cmotor.cpp \
     source/cpushrot.cpp \
-    source/ibelt.cpp \
     source/main.cpp \
     source/mainwindow.cpp \
     source/sensor.cpp

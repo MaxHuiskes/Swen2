@@ -6,6 +6,7 @@
 #include <QGroupBox>
 #include "quibelt.h"
 #include "cbelt.h"
+#include "cblock.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 {
     ui->setupUi(this);
-
     cBelt *belt1 = new cBelt;
     belt1->setBelt(1);
     mBelt =  belt1;
@@ -23,93 +23,103 @@ MainWindow::MainWindow(QWidget *parent)
     belt3->setBelt(3);
 
     QUIBelt* invoerband1;
-    invoerband1 = new QUIBelt(this, belt1);
+    invoerband1 = new QUIBelt(this);
+    invoerband1->setBelt(belt1);
     invoerband1->setGeometry(10,30,200,200);
     mQUIbelt = invoerband1;
     QUIBelt* invoerband2;
-    invoerband2 = new QUIBelt(this, belt2);
+    invoerband2 = new QUIBelt(this);
+    invoerband2->setBelt(belt2);
     invoerband2->setGeometry(150,30,200,200);
     QUIBelt* invoerband3;
-    invoerband3 = new QUIBelt(this, belt3);
+    invoerband3 = new QUIBelt(this);
+    invoerband3->setBelt(belt3);
     invoerband3->setGeometry(290,30,200,200);
 
     QPushButton *button = new QPushButton("Set block on first belt", this);
     button->connect(button, &QPushButton::pressed, this, &MainWindow::on_clicked);
     button->setGeometry(639,500,121,41);
 
-    checkbox = new QCheckBox("Low plastic", this);
-    checkbox->setGeometry(439,500,121,19);
-    checkbox->connect(checkbox, &QPushButton::pressed, this , &MainWindow::on_checkBox_clicked);
-    checkbox->setCheckable(true);
+    lowP = new QCheckBox("Low plastic", this);
+    lowP->setGeometry(439,500,121,19);
+    lowP->connect(lowP, &QPushButton::pressed, this , &MainWindow::on_lowP_clicked);
+    lowP->setCheckable(true);
 
-    checkbox1 = new QCheckBox("Middle plastic", this);
-    checkbox1->setGeometry(439,515,121,19);
-    checkbox1->connect(checkbox1, &QPushButton::pressed, this , &MainWindow::on_checkBox1_clicked);
-    checkbox1->setCheckable(true);
+    middleP = new QCheckBox("Middle plastic", this);
+    middleP->setGeometry(439,515,121,19);
+    middleP->connect(middleP, &QPushButton::pressed, this , &MainWindow::on_middleP_clicked);
+    middleP->setCheckable(true);
 
-    checkbox2 = new QCheckBox("High plastic", this);
-    checkbox2->setGeometry(439,530,121,19);
-    checkbox2->connect(checkbox2, &QPushButton::pressed, this , &MainWindow::on_checkBox2_clicked);
-    checkbox2->setCheckable(true);
+    highP = new QCheckBox("High plastic", this);
+    highP->setGeometry(439,530,121,19);
+    highP->connect(highP, &QPushButton::pressed, this , &MainWindow::on_highP_clicked);
+    highP->setCheckable(true);
 
-    checkbox3 = new QCheckBox("Low metal", this);
-    checkbox3->setGeometry(539,500,121,19);
-    checkbox3->connect(checkbox3, &QPushButton::pressed, this , &MainWindow::on_checkBox3_clicked);
-    checkbox3->setCheckable(true);
+    lowM = new QCheckBox("Low metal", this);
+    lowM->setGeometry(539,500,121,19);
+    lowM->connect(lowM, &QPushButton::pressed, this , &MainWindow::on_lowM_clicked);
+    lowM->setCheckable(true);
 
-    checkbox4 = new QCheckBox("Middle metal", this);
-    checkbox4->setGeometry(539,515,121,19);
-    checkbox4->connect(checkbox4, &QPushButton::pressed, this , &MainWindow::on_checkBox4_clicked);
-    checkbox4->setCheckable(true);
+    middleM = new QCheckBox("Middle metal", this);
+    middleM->setGeometry(539,515,121,19);
+    middleM->connect(middleM, &QPushButton::pressed, this , &MainWindow::on_middleM_clicked);
+    middleM->setCheckable(true);
 
-    checkbox5 = new QCheckBox("High metal", this);
-    checkbox5->setGeometry(539,530,121,19);
-    checkbox5->connect(checkbox5, &QPushButton::pressed, this , &MainWindow::on_checkBox5_clicked);
-    checkbox5->setCheckable(true);
+    highM = new QCheckBox("High metal", this);
+    highM->setGeometry(539,530,121,19);
+    highM->connect(highM, &QPushButton::pressed, this , &MainWindow::on_highM_clicked);
+    highM->setCheckable(true);
 
     QButtonGroup *check = new QButtonGroup(this);
-    check->addButton(checkbox);
-    check->addButton(checkbox1);
-    check->addButton(checkbox2);
-    check->addButton(checkbox3);
-    check->addButton(checkbox4);
-    check->addButton(checkbox5);
+    check->addButton(lowP);
+    check->addButton(middleP);
+    check->addButton(highP);
+    check->addButton(lowM);
+    check->addButton(middleM);
+    check->addButton(highM);
 }
 
 MainWindow::~MainWindow()
 {
+    delete lowP;
+    delete middleP;
+    delete highP;
+    delete lowM;
+    delete middleM;
+    delete highM;
     delete ui;
 }
 
 void MainWindow::on_clicked()
 {
-    mQUIbelt->setButton(blck);
+    mQUIbelt->setButton(door);
 }
 
-void MainWindow::on_checkBox_clicked()
+void MainWindow::on_lowP_clicked()
 {
-    blck = "Low plastic";
+   door = new cblock("Low plastic");
 }
 
-void MainWindow::on_checkBox1_clicked()
+void MainWindow::on_middleP_clicked()
 {
-    blck = "Middle plastic";
+    door = new cblock("Middle plastic");
 }
-void MainWindow::on_checkBox2_clicked()
+void MainWindow::on_highP_clicked()
 {
-    blck = "High plastic";
+    door = new cblock("High plastic");
 }
-void MainWindow::on_checkBox3_clicked()
+void MainWindow::on_lowM_clicked()
 {
-    blck = "Low metal";
-}
-
-void MainWindow::on_checkBox4_clicked()
-{
-    blck = "Middle metal";
+    door = new cblock("Low metal");
 }
 
-void MainWindow::on_checkBox5_clicked()
+void MainWindow::on_middleM_clicked()
 {
-    blck = "High metal";
+    door = new cblock("Middle metal");
 }
+
+void MainWindow::on_highM_clicked()
+{
+    door = new cblock("High metal");
+}
+
