@@ -19,6 +19,5 @@ void cmotor::moveMotor(){
 }
 
 void cmotor::endTimer(){
-    MainWindow w(nullptr);
-    w.invoerband2->setLabel(blck);
+
 }

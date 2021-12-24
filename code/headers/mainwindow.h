@@ -22,8 +22,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent);
     ~MainWindow();
-    cBelt *belt2 = new cBelt;
-    QUIBelt* invoerband2 = new QUIBelt(this);
+
 
 public slots:
      void on_clicked();

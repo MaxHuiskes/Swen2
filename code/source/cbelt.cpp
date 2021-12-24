@@ -10,7 +10,9 @@ void cBelt::toggleMotor(){
     motor.moveMotor();
 }
 
+
 void cBelt::setBlock(cblock * blck){
+
    if (sensor == 0){
       block = blck->print;
       bl = blck;
@@ -24,4 +26,5 @@ void cBelt::setBelt(int nr){
 }
 
 // modbus TCP voor connectie tussen controller en ui
+
 
