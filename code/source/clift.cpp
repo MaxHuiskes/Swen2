@@ -3,12 +3,12 @@
 
 cLift::cLift()
 {
- isBlok = 0;
+    isBlok = 0;
 }
 
 void cLift::activate(){
     isBlok = 1; //status blokje op lift
-    motor.moveMotor(-1); //lift omlaag
+   // motor.moveMotor(-1); //lift omlaag
 }
 
 void cLift::checkDown(){
@@ -18,6 +18,6 @@ void cLift::checkDown(){
 
 void cLift::goUp(){
     pushrod.move(); //duwt het blokje weg
-    motor.moveMotor(1); //lift omhoog
+   // motor.moveMotor(1); //lift omhoog
     isBlok = 0; //status geen bokje op lift
 }

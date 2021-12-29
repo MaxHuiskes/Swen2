@@ -6,6 +6,5 @@ sensor::sensor()
 }
 
 bool sensor::detect(){
-
     return 0;
 }

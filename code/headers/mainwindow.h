@@ -25,18 +25,13 @@ public:
 
 
 public slots:
-     void on_clicked();
-     void on_lowP_clicked();
-     void on_middleP_clicked();
-     void on_highP_clicked();
-     void on_lowM_clicked();
-     void on_middleM_clicked();
-     void on_highM_clicked();
-
-
-private slots:
-
-
+    void on_clicked();
+    void on_lowP_clicked();
+    void on_middleP_clicked();
+    void on_highP_clicked();
+    void on_lowM_clicked();
+    void on_middleM_clicked();
+    void on_highM_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -48,7 +43,7 @@ private:
     QCheckBox *lowM;
     QCheckBox *middleM;
     QCheckBox *highM;
-    cblock *door;
+    cblock *Block;
 
 };
 #endif // MAINWINDOW_H

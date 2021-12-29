@@ -1,23 +1,26 @@
 #include "cbelt.h"
 #include "cblock.h"
+#include <QWidget>
 
-cBelt::cBelt()
+cBelt::cBelt(QWidget *parent)
+    :  parent(parent)
 {
 
 }
 void cBelt::toggleMotor(){
-    cmotor motor(bl);
+    cmotor motor(bl, parent );
     motor.moveMotor();
 }
 
 
 void cBelt::setBlock(cblock * blck){
 
-   if (sensor == 0){
-      block = blck->print;
-      bl = blck;
-      toggleMotor();
-   }
+    if (sensor == 0){
+        block = blck->print;
+        bl = blck;
+        bl->detector = 0;
+        toggleMotor();
+    }
 }
 
 void cBelt::setBelt(int nr){
