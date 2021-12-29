@@ -1,23 +1,26 @@
 #include "headers/cmotor.h"
-#include "sensor.h"
 #include <QTimer>
-#include "mainwindow.h"
 #include <QDebug>
 #include "cblock.h"
-#include "quibelt.h"
+#include "sensor.h"
 
-cmotor::cmotor(cblock * block)
+cmotor::cmotor(cblock * block , QWidget *parent)
+    : QWidget(parent)
+    , mLabel (this  )
 {
     blck = block;
 }
 
 void cmotor::moveMotor(){
-     QTimer *timer = new QTimer;
-     timer->connect(timer, &QTimer::timeout,this, &cmotor::endTimer);
-     timer->isSingleShot();
-     timer->start(1000);
+    for (int i = 0; i < 65001; i ++){
+        if (i == 65000){
+            printLabel();
+        }
+    }
 }
 
-void cmotor::endTimer(){
-
+void cmotor::printLabel(){
+    blck->detector = 1;
+    sensor sens;
+    sens.detect();
 }

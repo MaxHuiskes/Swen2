@@ -9,10 +9,11 @@
 #include <QString>
 
 class cblock;
+class QWidget;
 class cBelt : iBelt
 {
 public:
-    cBelt();
+    cBelt(QWidget *parent);
 
     QString block = "No block";
     cblock *bl;
@@ -21,8 +22,13 @@ public:
     int nextBelt = 0;
 
     void toggleMotor();
-    void setBlock(cblock *blck);
     void setBelt(int nr);
+
+public slots:
+    void setBlock(cblock *blck);
+
+private:
+    QWidget *parent;
 
 };
 

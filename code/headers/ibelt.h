@@ -6,7 +6,7 @@ class iBelt
 {
 public:
     iBelt(){}
-     virtual ~iBelt(){}
+    virtual ~iBelt(){}
 
 public:
 

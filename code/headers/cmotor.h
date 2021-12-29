@@ -1,20 +1,23 @@
 #ifndef CMOTOR_H
 #define CMOTOR_H
-#include  <QObject>
+#include <QWidget>
+#include <QLabel>
 class cblock;
-class cmotor : public QObject
+class cmotor : public QWidget
 {
-   // Q_OBJECT
+     Q_OBJECT
 public:
-    cmotor(cblock *);
+    cmotor(cblock *, QWidget*);
     virtual ~cmotor() {}
     void moveMotor(); // bewegen van motor en richting
+    void printLabel();
 
 public slots:
-    void endTimer();
+
 
 private:
     cblock *blck;
+    QLabel mLabel;
 };
 
 

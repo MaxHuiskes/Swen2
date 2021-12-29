@@ -14,12 +14,12 @@ MainWindow::MainWindow(QWidget *parent)
 
 {
     ui->setupUi(this);
-    cBelt *belt1 = new cBelt;
+    cBelt *belt1 = new cBelt(this);
     belt1->setBelt(1);
     mBelt =  belt1;
-    cBelt *belt2 = new cBelt;
+    cBelt *belt2 = new cBelt(this);
     belt2->setBelt(2);
-    cBelt *belt3 = new cBelt;
+    cBelt *belt3 = new cBelt(this);
     belt3->setBelt(3);
 
     QUIBelt* invoerband1;
@@ -92,34 +92,34 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_clicked()
 {
-    mQUIbelt->setButton(door);
+    mQUIbelt->setButton(Block);
 }
 
 void MainWindow::on_lowP_clicked()
 {
-   door = new cblock("Low plastic");
+    Block = new cblock("Low plastic");
 }
 
 void MainWindow::on_middleP_clicked()
 {
-    door = new cblock("Middle plastic");
+    Block = new cblock("Middle plastic");
 }
 void MainWindow::on_highP_clicked()
 {
-    door = new cblock("High plastic");
+    Block = new cblock("High plastic");
 }
 void MainWindow::on_lowM_clicked()
 {
-    door = new cblock("Low metal");
+    Block = new cblock("Low metal");
 }
 
 void MainWindow::on_middleM_clicked()
 {
-    door = new cblock("Middle metal");
+    Block = new cblock("Middle metal");
 }
 
 void MainWindow::on_highM_clicked()
 {
-    door = new cblock("High metal");
+    Block = new cblock("High metal");
 }
 

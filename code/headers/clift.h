@@ -16,7 +16,7 @@ public:
     bool isBlok; //of er een blokje op zit
 private:
     sensor sensor;
-    cmotor motor;
+   // cmotor motor;
     cpushrot pushrod;
 };
 
