@@ -1,6 +1,6 @@
 #include "headers/cblock.h"
 
-cblock::cblock(QString info)
+cblock::cblock(QString info) // create right info to block
 {
     print = info;
 
