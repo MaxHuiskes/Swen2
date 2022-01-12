@@ -7,13 +7,13 @@ cBelt::cBelt(QWidget *parent)
 {
 
 }
-void cBelt::toggleMotor(){
+void cBelt::toggleMotor(){  // toggle motor
     cmotor motor(bl, parent );
     motor.moveMotor();
 }
 
 
-void cBelt::setBlock(cblock * blck){
+void cBelt::setBlock(cblock * blck){ // set block on belt
 
     if (sensor == 0){
         block = blck->print;
@@ -23,9 +23,8 @@ void cBelt::setBlock(cblock * blck){
     }
 }
 
-void cBelt::setBelt(int nr){
+void cBelt::setBelt(int nr){  // set belt number
     beltnr = nr;
-    nextBelt = beltnr + 1;
 }
 
 // modbus TCP voor connectie tussen controller en ui
