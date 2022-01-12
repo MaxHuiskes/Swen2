@@ -90,35 +90,35 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_clicked()
+void MainWindow::on_clicked()  // click on button
 {
     mQUIbelt->setButton(Block);
 }
 
-void MainWindow::on_lowP_clicked()
+void MainWindow::on_lowP_clicked() // select block
 {
     Block = new cblock("Low plastic");
 }
 
-void MainWindow::on_middleP_clicked()
+void MainWindow::on_middleP_clicked() // select block
 {
     Block = new cblock("Middle plastic");
 }
-void MainWindow::on_highP_clicked()
+void MainWindow::on_highP_clicked() // select block
 {
     Block = new cblock("High plastic");
 }
-void MainWindow::on_lowM_clicked()
+void MainWindow::on_lowM_clicked() // select block
 {
     Block = new cblock("Low metal");
 }
 
-void MainWindow::on_middleM_clicked()
+void MainWindow::on_middleM_clicked() // select block
 {
     Block = new cblock("Middle metal");
 }
 
-void MainWindow::on_highM_clicked()
+void MainWindow::on_highM_clicked() // select block
 {
     Block = new cblock("High metal");
 }
