@@ -8,7 +8,7 @@ QUIBelt::QUIBelt(QWidget *parent)
 
 
 }
-void QUIBelt::setBelt(cBelt *blt){
+void QUIBelt::setBelt(cBelt *blt){      // set belt info to mainwindow
     mBelt = blt;
     QString beltinfo ="Conveyor belt number " +
             QString::number(mBelt->beltnr) + '\n' +
@@ -17,7 +17,7 @@ void QUIBelt::setBelt(cBelt *blt){
 
     mLabel.setText(beltinfo);
 }
-void QUIBelt::setButton(cblock *block){
+void QUIBelt::setButton(cblock *block){     // set block and change belt info
     mBelt->setBlock(block);
 
     QString beltinfo ="Conveyor belt number " +
@@ -27,7 +27,7 @@ void QUIBelt::setButton(cblock *block){
 
     mLabel.setText(beltinfo);
 }
-void QUIBelt::setLabel(cblock *block){
+void QUIBelt::setLabel(cblock *block){      // set block and change belt info
     mBelt->setBlock(block);
 
     QString beltinfo ="Conveyor belt number " +
