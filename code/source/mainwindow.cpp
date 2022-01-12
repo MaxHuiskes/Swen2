@@ -15,14 +15,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
         
-    cBelt *belt1 = new cBelt(this); //  create first belt
+    cBelt *belt1 = new cBelt; //  create first belt
     belt1->setBelt(1);
     mBelt =  belt1;
         
-    cBelt *belt2 = new cBelt(this); // create second belt
+    cBelt *belt2 = new cBelt; // create second belt
     belt2->setBelt(2);
         
-    cBelt *belt3 = new cBelt(this); // creat thirth belt
+    cBelt *belt3 = new cBelt; // creat thirth belt
     belt3->setBelt(3);
 
     QUIBelt* invoerband1;  // create info for first belt

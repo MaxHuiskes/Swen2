@@ -45,29 +45,31 @@ OBJECTS_DIR   = debug
 
 ####### Files
 
-SOURCES       = ..\code\source\quibelt.cpp \
+SOURCES       = ..\code\source\ibelt.cpp \
+		..\code\source\quibelt.cpp \
 		..\code\source\cbelt.cpp \
 		..\code\source\quibelt.cpp \
 		..\code\source\cblock.cpp \
 		..\code\source\clift.cpp \
 		..\code\source\cmotor.cpp \
 		..\code\source\cpushrot.cpp \
-		..\code\source\ibelt.cpp \
 		..\code\source\main.cpp \
 		..\code\source\mainwindow.cpp \
-		..\code\source\sensor.cpp debug\moc_mainwindow.cpp \
+		..\code\source\sensor.cpp debug\moc_cmotor.cpp \
+		debug\moc_mainwindow.cpp \
 		debug\moc_quibelt.cpp
-OBJECTS       = debug\quibelt.obj \
+OBJECTS       = debug\ibelt.obj \
+		debug\quibelt.obj \
 		debug\cbelt.obj \
 		debug\quibelt.obj \
 		debug\cblock.obj \
 		debug\clift.obj \
 		debug\cmotor.obj \
 		debug\cpushrot.obj \
-		debug\ibelt.obj \
 		debug\main.obj \
 		debug\mainwindow.obj \
 		debug\sensor.obj \
+		debug\moc_cmotor.obj \
 		debug\moc_mainwindow.obj \
 		debug\moc_quibelt.obj
 
@@ -79,14 +81,14 @@ DIST          =  ..\code\headers\cbelt.h \
 		..\code\headers\ibelt.h \
 		..\code\headers\mainwindow.h \
 		..\code\headers\sensor.h \
-		..\code\headers\quibelt.h ..\code\source\quibelt.cpp \
+		..\code\headers\quibelt.h ..\code\source\ibelt.cpp \
+		..\code\source\quibelt.cpp \
 		..\code\source\cbelt.cpp \
 		..\code\source\quibelt.cpp \
 		..\code\source\cblock.cpp \
 		..\code\source\clift.cpp \
 		..\code\source\cmotor.cpp \
 		..\code\source\cpushrot.cpp \
-		..\code\source\ibelt.cpp \
 		..\code\source\main.cpp \
 		..\code\source\mainwindow.cpp \
 		..\code\source\sensor.cpp
@@ -166,7 +168,7 @@ all: Makefile.Debug  $(DESTDIR_TARGET)
 
 $(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-debug\quibelt.obj debug\cbelt.obj debug\quibelt.obj debug\cblock.obj debug\clift.obj debug\cmotor.obj debug\cpushrot.obj debug\ibelt.obj debug\main.obj debug\mainwindow.obj debug\sensor.obj debug\moc_mainwindow.obj debug\moc_quibelt.obj
+debug\ibelt.obj debug\quibelt.obj debug\cbelt.obj debug\quibelt.obj debug\cblock.obj debug\clift.obj debug\cmotor.obj debug\cpushrot.obj debug\main.obj debug\mainwindow.obj debug\sensor.obj debug\moc_cmotor.obj debug\moc_mainwindow.obj debug\moc_quibelt.obj
 $(LIBS)
 <<
 
@@ -176,10 +178,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) swen2.zip $(SOURCES) $(DIST) ..\code\swen2.pro C:\Qt\5.9.9\msvc2015\mkspecs\features\spec_pre.prf C:\Qt\5.9.9\msvc2015\mkspecs\common\angle.conf C:\Qt\5.9.9\msvc2015\mkspecs\common\msvc-desktop.conf C:\Qt\5.9.9\msvc2015\mkspecs\qconfig.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_core.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_help.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_location.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_network.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_script.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webengine.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\features\qt_functions.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qt_config.prf C:\Qt\5.9.9\msvc2015\mkspecs\win32-msvc\qmake.conf C:\Qt\5.9.9\msvc2015\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.9.9\msvc2015\mkspecs\features\exclusive_builds.prf C:\Qt\5.9.9\msvc2015\mkspecs\common\msvc-version.conf C:\Qt\5.9.9\msvc2015\mkspecs\features\toolchain.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\default_pre.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\win32\default_pre.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\resolve_config.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\default_post.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\build_pass.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qml_debug.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\precompile_header.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\warn_on.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qt.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\resources.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\moc.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\win32\opengl.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\uic.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qmake_use.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\file_copies.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\win32\windows.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\testcase_targets.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\exceptions.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\yacc.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\lex.prf ..\code\swen2.pro C:\Qt\5.9.9\msvc2015\lib\qtmaind.prl C:\Qt\5.9.9\msvc2015\lib\Qt5Widgetsd.prl C:\Qt\5.9.9\msvc2015\lib\Qt5Guid.prl C:\Qt\5.9.9\msvc2015\lib\Qt5Cored.prl    C:\Qt\5.9.9\msvc2015\mkspecs\features\data\dummy.cpp ..\code\headers\cbelt.h ..\code\headers\cblock.h ..\code\headers\clift.h ..\code\headers\cmotor.h ..\code\headers\cpushrot.h ..\code\headers\ibelt.h ..\code\headers\mainwindow.h ..\code\headers\sensor.h ..\code\headers\quibelt.h ..\code\source\quibelt.cpp ..\code\source\cbelt.cpp ..\code\source\quibelt.cpp ..\code\source\cblock.cpp ..\code\source\clift.cpp ..\code\source\cmotor.cpp ..\code\source\cpushrot.cpp ..\code\source\ibelt.cpp ..\code\source\main.cpp ..\code\source\mainwindow.cpp ..\code\source\sensor.cpp ..\code\ui\mainwindow.ui    
+	$(ZIP) swen2.zip $(SOURCES) $(DIST) ..\code\swen2.pro C:\Qt\5.9.9\msvc2015\mkspecs\features\spec_pre.prf C:\Qt\5.9.9\msvc2015\mkspecs\common\angle.conf C:\Qt\5.9.9\msvc2015\mkspecs\common\msvc-desktop.conf C:\Qt\5.9.9\msvc2015\mkspecs\qconfig.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_core.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_help.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_location.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_network.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_script.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_script_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webengine.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webview.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.9.9\msvc2015\mkspecs\features\qt_functions.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qt_config.prf C:\Qt\5.9.9\msvc2015\mkspecs\win32-msvc\qmake.conf C:\Qt\5.9.9\msvc2015\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.9.9\msvc2015\mkspecs\features\exclusive_builds.prf C:\Qt\5.9.9\msvc2015\mkspecs\common\msvc-version.conf C:\Qt\5.9.9\msvc2015\mkspecs\features\toolchain.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\default_pre.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\win32\default_pre.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\resolve_config.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\exclusive_builds_post.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\default_post.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\build_pass.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qml_debug.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\precompile_header.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\warn_on.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qt.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\resources.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\moc.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\win32\opengl.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\uic.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\qmake_use.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\file_copies.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\win32\windows.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\testcase_targets.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\exceptions.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\yacc.prf C:\Qt\5.9.9\msvc2015\mkspecs\features\lex.prf ..\code\swen2.pro C:\Qt\5.9.9\msvc2015\lib\qtmaind.prl C:\Qt\5.9.9\msvc2015\lib\Qt5Widgetsd.prl C:\Qt\5.9.9\msvc2015\lib\Qt5Guid.prl C:\Qt\5.9.9\msvc2015\lib\Qt5Cored.prl    C:\Qt\5.9.9\msvc2015\mkspecs\features\data\dummy.cpp ..\code\headers\cbelt.h ..\code\headers\cblock.h ..\code\headers\clift.h ..\code\headers\cmotor.h ..\code\headers\cpushrot.h ..\code\headers\ibelt.h ..\code\headers\mainwindow.h ..\code\headers\sensor.h ..\code\headers\quibelt.h ..\code\source\ibelt.cpp ..\code\source\quibelt.cpp ..\code\source\cbelt.cpp ..\code\source\quibelt.cpp ..\code\source\cblock.cpp ..\code\source\clift.cpp ..\code\source\cmotor.cpp ..\code\source\cpushrot.cpp ..\code\source\main.cpp ..\code\source\mainwindow.cpp ..\code\source\sensor.cpp ..\code\ui\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\quibelt.obj debug\cbelt.obj debug\quibelt.obj debug\cblock.obj debug\clift.obj debug\cmotor.obj debug\cpushrot.obj debug\ibelt.obj debug\main.obj debug\mainwindow.obj debug\sensor.obj debug\moc_mainwindow.obj debug\moc_quibelt.obj
+	-$(DEL_FILE) debug\ibelt.obj debug\quibelt.obj debug\cbelt.obj debug\quibelt.obj debug\cblock.obj debug\clift.obj debug\cmotor.obj debug\cpushrot.obj debug\main.obj debug\mainwindow.obj debug\sensor.obj debug\moc_cmotor.obj debug\moc_mainwindow.obj debug\moc_quibelt.obj
 	-$(DEL_FILE) debug\swen2.exp debug\swen2.vc.pdb debug\swen2.ilk debug\swen2.idb
 
 distclean: clean 
@@ -205,9 +207,117 @@ compiler_moc_predefs_clean:
 debug\moc_predefs.h: C:\Qt\5.9.9\msvc2015\mkspecs\features\data\dummy.cpp
 	cl -BxC:\Qt\5.9.9\msvc2015\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E C:\Qt\5.9.9\msvc2015\mkspecs\features\data\dummy.cpp 2>NUL >debug\moc_predefs.h
 
-compiler_moc_header_make_all: debug\moc_mainwindow.cpp debug\moc_quibelt.cpp
+compiler_moc_header_make_all: debug\moc_cmotor.cpp debug\moc_mainwindow.cpp debug\moc_quibelt.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_quibelt.cpp
+	-$(DEL_FILE) debug\moc_cmotor.cpp debug\moc_mainwindow.cpp debug\moc_quibelt.cpp
+debug\moc_cmotor.cpp: C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qwidget.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtgui-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmargins.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrect.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsize.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpalette.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcolor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgb.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgba64.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qbrush.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qmatrix.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpolygon.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qregion.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdatastream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qline.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtransform.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpainterpath.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qimage.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixelformat.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfont.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcursor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qkeysequence.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qset.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurlquery.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfile.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfiledevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qvector2d.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
+		..\code\headers\cmotor.h \
+		debug\moc_predefs.h \
+		C:\Qt\5.9.9\msvc2015\bin\moc.exe
+	C:\Qt\5.9.9\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/5.9.9/msvc2015/mkspecs/win32-msvc -IC:/Users/Maxhu/Documents/swentets/swen2/code -IC:/Users/Maxhu/Documents/swentets/swen2/code/headers -IC:/Qt/5.9.9/msvc2015/include -IC:/Qt/5.9.9/msvc2015/include/QtWidgets -IC:/Qt/5.9.9/msvc2015/include/QtGui -IC:/Qt/5.9.9/msvc2015/include/QtANGLE -IC:/Qt/5.9.9/msvc2015/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\code\headers\cmotor.h -o debug\moc_cmotor.cpp
+
 debug\moc_mainwindow.cpp: C:\Qt\5.9.9\msvc2015\include\QtWidgets\QMainWindow \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qmainwindow.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgetsglobal.h \
@@ -311,10 +421,21 @@ debug\moc_mainwindow.cpp: C:\Qt\5.9.9\msvc2015\include\QtWidgets\QMainWindow \
 		C:\Qt\5.9.9\msvc2015\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.9.9\msvc2015\include\QtGui\qicon.h \
+		..\code\headers\cbelt.h \
+		..\code\headers\ibelt.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
+		..\code\headers\sensor.h \
+		..\code\headers\cpushrot.h \
+		..\code\headers\cmotor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
 		..\code\headers\mainwindow.h \
 		debug\moc_predefs.h \
 		C:\Qt\5.9.9\msvc2015\bin\moc.exe
-	C:\Qt\5.9.9\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/5.9.9/msvc2015/mkspecs/win32-msvc -IC:/Users/Maxhu/Documents/swentets/lift/Swen2/code -IC:/Users/Maxhu/Documents/swentets/lift/Swen2/code/headers -IC:/Qt/5.9.9/msvc2015/include -IC:/Qt/5.9.9/msvc2015/include/QtWidgets -IC:/Qt/5.9.9/msvc2015/include/QtGui -IC:/Qt/5.9.9/msvc2015/include/QtANGLE -IC:/Qt/5.9.9/msvc2015/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\code\headers\mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\5.9.9\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/5.9.9/msvc2015/mkspecs/win32-msvc -IC:/Users/Maxhu/Documents/swentets/swen2/code -IC:/Users/Maxhu/Documents/swentets/swen2/code/headers -IC:/Qt/5.9.9/msvc2015/include -IC:/Qt/5.9.9/msvc2015/include/QtWidgets -IC:/Qt/5.9.9/msvc2015/include/QtGui -IC:/Qt/5.9.9/msvc2015/include/QtANGLE -IC:/Qt/5.9.9/msvc2015/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\code\headers\mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug\moc_quibelt.cpp: C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qwidget.h \
@@ -422,7 +543,7 @@ debug\moc_quibelt.cpp: C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
 		..\code\headers\quibelt.h \
 		debug\moc_predefs.h \
 		C:\Qt\5.9.9\msvc2015\bin\moc.exe
-	C:\Qt\5.9.9\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/5.9.9/msvc2015/mkspecs/win32-msvc -IC:/Users/Maxhu/Documents/swentets/lift/Swen2/code -IC:/Users/Maxhu/Documents/swentets/lift/Swen2/code/headers -IC:/Qt/5.9.9/msvc2015/include -IC:/Qt/5.9.9/msvc2015/include/QtWidgets -IC:/Qt/5.9.9/msvc2015/include/QtGui -IC:/Qt/5.9.9/msvc2015/include/QtANGLE -IC:/Qt/5.9.9/msvc2015/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\code\headers\quibelt.h -o debug\moc_quibelt.cpp
+	C:\Qt\5.9.9\msvc2015\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -IC:/Qt/5.9.9/msvc2015/mkspecs/win32-msvc -IC:/Users/Maxhu/Documents/swentets/swen2/code -IC:/Users/Maxhu/Documents/swentets/swen2/code/headers -IC:/Qt/5.9.9/msvc2015/include -IC:/Qt/5.9.9/msvc2015/include/QtWidgets -IC:/Qt/5.9.9/msvc2015/include/QtGui -IC:/Qt/5.9.9/msvc2015/include/QtANGLE -IC:/Qt/5.9.9/msvc2015/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.29.30133\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\code\headers\quibelt.h -o debug\moc_quibelt.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -445,6 +566,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
+debug\ibelt.obj: ..\code\source\ibelt.cpp 
+
 debug\quibelt.obj: ..\code\source\quibelt.cpp ../code/headers/quibelt.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qwidget.h \
@@ -551,20 +674,18 @@ debug\quibelt.obj: ..\code\source\quibelt.cpp ../code/headers/quibelt.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
 		../code/headers/cbelt.h \
 		../code/headers/ibelt.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
 		../code/headers/sensor.h \
 		../code/headers/cpushrot.h \
 		../code/headers/cmotor.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QString
+		../code/headers/cblock.h
 
 debug\cbelt.obj: ..\code\source\cbelt.cpp ../code/headers/cbelt.h \
 		../code/headers/ibelt.h \
-		../code/headers/sensor.h \
-		../code/headers/cpushrot.h \
-		../code/headers/cmotor.h \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\qcoreevent.h \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qchar.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobal.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig.h \
@@ -588,13 +709,89 @@ debug\cbelt.obj: ..\code\source\cbelt.cpp ../code/headers/cbelt.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qversiontagging.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearray.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnamespace.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qarraydata.h \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\qstring.h \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\qchar.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringbuilder.h \
+		../code/headers/sensor.h \
+		../code/headers/cpushrot.h \
+		../code/headers/cmotor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qwidget.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtgui-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QString
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmargins.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrect.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsize.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpalette.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcolor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgb.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgba64.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qbrush.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qmatrix.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpolygon.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qregion.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdatastream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qline.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtransform.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpainterpath.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qimage.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixelformat.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfont.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcursor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qkeysequence.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qset.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurlquery.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfile.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfiledevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qvector2d.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
+		../code/headers/cblock.h
 
 debug\quibelt.obj: ..\code\source\quibelt.cpp ../code/headers/quibelt.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
@@ -702,24 +899,265 @@ debug\quibelt.obj: ..\code\source\quibelt.cpp ../code/headers/quibelt.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
 		../code/headers/cbelt.h \
 		../code/headers/ibelt.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
 		../code/headers/sensor.h \
 		../code/headers/cpushrot.h \
 		../code/headers/cmotor.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QString
+		../code/headers/cblock.h
 
-debug\cblock.obj: ..\code\source\cblock.cpp ../code/headers/cblock.h
+debug\cblock.obj: ..\code\source\cblock.cpp ../code/headers/cblock.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringbuilder.h
 
 debug\clift.obj: ..\code\source\clift.cpp ../code/headers/clift.h \
 		../code/headers/cmotor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qwidget.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtgui-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmargins.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrect.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsize.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpalette.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcolor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgb.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgba64.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qbrush.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qmatrix.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpolygon.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qregion.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdatastream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qline.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtransform.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpainterpath.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qimage.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixelformat.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfont.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcursor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qkeysequence.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qset.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurlquery.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfile.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfiledevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qvector2d.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
 		../code/headers/cpushrot.h \
 		../code/headers/sensor.h
 
-debug\cmotor.obj: ..\code\source\cmotor.cpp ../code/headers/cmotor.h
+debug\cmotor.obj: ..\code\source\cmotor.cpp ../code/headers/cmotor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qwidget.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobal.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qconfig.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtcore-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsysinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlogging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qflags.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmutex.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnumeric.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qversiontagging.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtgui-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qnamespace.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstring.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qchar.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrefcount.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qarraydata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qalgorithms.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiterator.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpair.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringlist.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qregexp.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcoreevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmetatype.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qobject_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmargins.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpaintdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qrect.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsize.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qpoint.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpalette.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcolor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgb.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qrgba64.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qbrush.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvector.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qmatrix.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpolygon.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qregion.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdatastream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qiodevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qline.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtransform.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpainterpath.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qimage.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixelformat.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qpixmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qshareddata.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qhash.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfont.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontmetrics.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qfontinfo.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qcursor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qkeysequence.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qevent.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qvariant.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qmap.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qdebug.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtextstream.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qlocale.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qset.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurl.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qurlquery.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfile.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qfiledevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qvector2d.h \
+		C:\Qt\5.9.9\msvc2015\include\QtGui\qtouchdevice.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QTimer \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qtimer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\qbasictimer.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QDebug \
+		../code/headers/cblock.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
+		../code/headers/sensor.h
 
 debug\cpushrot.obj: ..\code\source\cpushrot.cpp ../code/headers/cpushrot.h
-
-debug\ibelt.obj: ..\code\source\ibelt.cpp ../code/headers/ibelt.h
 
 debug\main.obj: ..\code\source\main.cpp ../code/headers/mainwindow.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QMainWindow \
@@ -825,6 +1263,17 @@ debug\main.obj: ..\code\source\main.cpp ../code/headers/mainwindow.h \
 		C:\Qt\5.9.9\msvc2015\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.9.9\msvc2015\include\QtGui\qicon.h \
+		../code/headers/cbelt.h \
+		../code/headers/ibelt.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
+		../code/headers/sensor.h \
+		../code/headers/cpushrot.h \
+		../code/headers/cmotor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QApplication \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qapplication.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\qcoreapplication.h \
@@ -835,18 +1284,7 @@ debug\main.obj: ..\code\source\main.cpp ../code/headers/mainwindow.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QPushButton \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qpushbutton.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qabstractbutton.h \
-		../code/headers/quibelt.h \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
-		../code/headers/cbelt.h \
-		../code/headers/ibelt.h \
-		../code/headers/sensor.h \
-		../code/headers/cpushrot.h \
-		../code/headers/cmotor.h \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QString
+		../code/headers/quibelt.h
 
 debug\mainwindow.obj: ..\code\source\mainwindow.cpp ../code/headers/mainwindow.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QMainWindow \
@@ -952,6 +1390,17 @@ debug\mainwindow.obj: ..\code\source\mainwindow.cpp ../code/headers/mainwindow.h
 		C:\Qt\5.9.9\msvc2015\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.9.9\msvc2015\include\QtGui\qicon.h \
+		../code/headers/cbelt.h \
+		../code/headers/ibelt.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QString \
+		../code/headers/sensor.h \
+		../code/headers/cpushrot.h \
+		../code/headers/cmotor.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
+		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
+		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
 		ui_mainwindow.h \
 		C:\Qt\5.9.9\msvc2015\include\QtCore\QDebug \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QPushButton \
@@ -961,20 +1410,12 @@ debug\mainwindow.obj: ..\code\source\mainwindow.cpp ../code/headers/mainwindow.h
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qcheckbox.h \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QGroupBox \
 		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qgroupbox.h \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qframe.h \
 		../code/headers/quibelt.h \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QWidget \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\QLabel \
-		C:\Qt\5.9.9\msvc2015\include\QtWidgets\qlabel.h \
-		../code/headers/cbelt.h \
-		../code/headers/ibelt.h \
-		../code/headers/sensor.h \
-		../code/headers/cpushrot.h \
-		../code/headers/cmotor.h \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QEvent \
-		C:\Qt\5.9.9\msvc2015\include\QtCore\QString
+		../code/headers/cblock.h
 
 debug\sensor.obj: ..\code\source\sensor.cpp ../code/headers/sensor.h
+
+debug\moc_cmotor.obj: debug\moc_cmotor.cpp 
 
 debug\moc_mainwindow.obj: debug\moc_mainwindow.cpp 
 

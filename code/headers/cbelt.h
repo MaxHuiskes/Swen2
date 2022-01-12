@@ -13,7 +13,7 @@ class QWidget;
 class cBelt : iBelt
 {
 public:
-    cBelt(QWidget *parent);
+    cBelt();
 
     QString block = "No block";
     cblock *bl;
@@ -23,8 +23,6 @@ public:
 
     void toggleMotor();
     void setBelt(int nr);
-
-public slots:
     void setBlock(cblock *blck);
 
 private:

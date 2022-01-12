@@ -2,13 +2,12 @@
 #include "cblock.h"
 #include <QWidget>
 
-cBelt::cBelt(QWidget *parent)
-    :  parent(parent)
+cBelt::cBelt()
 {
 
 }
 void cBelt::toggleMotor(){  // toggle motor
-    cmotor motor(bl, parent );
+    cmotor motor(bl );
     motor.moveMotor();
 }
 

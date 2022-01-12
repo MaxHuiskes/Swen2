@@ -4,9 +4,8 @@
 #include "cblock.h"
 #include "sensor.h"
 
-cmotor::cmotor(cblock * block , QWidget *parent)
-    : QWidget(parent)
-    , mLabel (this  )
+cmotor::cmotor(cblock * block )
+    : mLabel (this  )
 {
     blck = block;
 }

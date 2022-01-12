@@ -7,7 +7,7 @@ class cmotor : public QWidget
 {
      Q_OBJECT
 public:
-    cmotor(cblock *, QWidget*);
+    cmotor(cblock *);
     virtual ~cmotor() {}
     void moveMotor(); // bewegen van motor en richting
     void printLabel();
