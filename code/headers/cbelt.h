@@ -10,6 +10,7 @@
 
 class cblock;
 class QWidget;
+class sensor;
 class cBelt : iBelt
 {
 public:
@@ -24,13 +25,17 @@ public:
     bool getBeltStatus(); // returns 1 if belt is occupied, 0 if belt is not occupied
     void setBeltStatus(bool newStatus); // sets belt status to 1 or 0
 
+    void receiveBlock(bool receiving);
+
 private:
     QWidget *parent;
     cmotor motor;
     cblock *bl;
-    sensor *highSensor;
+    sensor lowSensor;
+    sensor *highSensor = nullptr;
+    sensor *metalSensor = nullptr;
     int beltnr = 0;
-    int sensor = 0;
+    int allowBlock = 0;
     bool beltStatus; // 0 if not occupied, 1 if occupied
 };
 
