@@ -2,11 +2,12 @@
 #include "cblock.h"
 #include <QWidget>
 
+
 cBelt::cBelt(int nr)
 {
     beltnr = nr;
     if (beltnr == 1){
-
+        highSensor = nullptr;
     }
 }
 void cBelt::toggleMotor(){  // toggle motor

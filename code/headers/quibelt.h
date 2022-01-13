@@ -11,7 +11,7 @@ class QUIBelt : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QUIBelt(QWidget *parent);
+    QUIBelt(QWidget *parent);
     void setBelt(cBelt*);
     void setLabel(cblock*);
 

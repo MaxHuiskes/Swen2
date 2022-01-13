@@ -58,7 +58,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        menuuser_intrerface_DTX_simulation->setTitle(QApplication::translate("MainWindow", "user intrerface DTX simulation", Q_NULLPTR));
+        menuuser_intrerface_DTX_simulation->setTitle(QApplication::translate("MainWindow", "user interface DTX simulation", Q_NULLPTR));
     } // retranslateUi
 
 };

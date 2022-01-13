@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+
+#include <QTcpSocket>
+
 #include <QMainWindow>
 #include "cbelt.h"
 //class cBelt;
@@ -30,6 +33,7 @@ public slots:
     void on_highP_clicked();
     void on_lowM_clicked();
     void on_highM_clicked();
+    void onReadyRead();
 
 private:
     Ui::MainWindow *ui;
@@ -40,6 +44,7 @@ private:
     QCheckBox *lowM;
     QCheckBox *highM;
     cblock *Block;
+    QTcpSocket  _socket;
 
 };
 #endif // MAINWINDOW_H

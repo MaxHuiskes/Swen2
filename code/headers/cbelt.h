@@ -28,6 +28,7 @@ private:
     QWidget *parent;
     cmotor motor;
     cblock *bl;
+    sensor *highSensor;
     int beltnr = 0;
     int sensor = 0;
     bool beltStatus; // 0 if not occupied, 1 if occupied

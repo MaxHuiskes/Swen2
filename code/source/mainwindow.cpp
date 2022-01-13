@@ -8,13 +8,22 @@
 #include "cbelt.h"
 #include "cblock.h"
 #include <qbuttongroup.h>
+#include <QDebug>
+#include <QHostAddress>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , _socket(this)
 
 {
     ui->setupUi(this);
+
+    // create connection to server
+    _socket.connectToHost(QHostAddress("127.0.0.1"), 4242);
+    connect(&_socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+
+    // start normal program
     ui->menubar->hide();
         
     cBelt *belt1 = new cBelt(1); //  create first belt
@@ -68,6 +77,12 @@ MainWindow::MainWindow(QWidget *parent)
     check->addButton(highP);
     check->addButton(lowM);
     check->addButton(highM);
+}
+void MainWindow::onReadyRead() // gives status back to sever
+{
+    QByteArray datas = _socket.readAll();
+    qDebug() << datas;
+    _socket.write(QByteArray("ok !\n"));
 }
 
 MainWindow::~MainWindow()
