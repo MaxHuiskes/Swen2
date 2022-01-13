@@ -7,13 +7,8 @@
 cBelt::cBelt(int nr)
 {
     beltnr = nr;
-<<<<<<< HEAD
-    if (beltnr == 1){
-        highSensor = nullptr;
-=======
     if(beltnr == 1){
         highSensor = new sensor;
->>>>>>> 66ccd729c3caeb4e175a9bd6f86fe566e2a0ff8c
     }
 }
 

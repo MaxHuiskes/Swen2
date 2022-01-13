@@ -80,9 +80,9 @@ MainWindow::MainWindow(QWidget *parent)
 }
 void MainWindow::onReadyRead() // gives status back to sever
 {
-    QByteArray datas = _socket.readAll();
+    QByteArray datas = _socket.readAll(); //recieved data from server
     qDebug() << datas;
-    _socket.write(QByteArray("ok !\n"));
+    _socket.write(QByteArray("ok !\n")); // sends status client to server
 }
 
 MainWindow::~MainWindow()
@@ -98,7 +98,6 @@ void MainWindow::on_clicked()  // click on button
 {
     mQUIbelt->setLabel(Block);
 }
-
 void MainWindow::on_lowP_clicked() // select block
 {
     Block = new cblock("Low plastic");
