@@ -13,21 +13,24 @@ class QWidget;
 class cBelt : iBelt
 {
 public:
-    cBelt();
+    cBelt(int nr);
 
     QString block = "No block";
-    cblock *bl;
-    int beltnr = 0;
-    int sensor = 0;
-    int nextBelt = 0;
 
+    int  getBeltNr();
     void toggleMotor();
-    void setBelt(int nr);
     void setBlock(cblock *blck);
+
+    bool getBeltStatus(); // returns 1 if belt is occupied, 0 if belt is not occupied
+    void setBeltStatus(bool newStatus); // sets belt status to 1 or 0
 
 private:
     QWidget *parent;
-
+    cmotor motor;
+    cblock *bl;
+    int beltnr = 0;
+    int sensor = 0;
+    bool beltStatus; // 0 if not occupied, 1 if occupied
 };
 
 #endif // CBELT_H

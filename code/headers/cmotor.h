@@ -2,22 +2,20 @@
 #define CMOTOR_H
 #include <QWidget>
 #include <QLabel>
-class cblock;
+
 class cmotor : public QWidget
 {
      Q_OBJECT
 public:
-    cmotor(cblock *);
+    cmotor();
     virtual ~cmotor() {}
-    void moveMotor(); // bewegen van motor en richting
-    void printLabel();
+    void toggleMotor(); // toggle motor
+    bool getMotorStatus(); // get motor status, 0 if off, 1 if on
 
-public slots:
-
+    bool motorNotifySensor(); // if xx time has passed, send 1 to sensor, block has arrived at sensor
 
 private:
-    cblock *blck;
-    QLabel mLabel;
+    bool motorStatusOn; // status of motor, 0 if off, 1 if on
 };
 
 

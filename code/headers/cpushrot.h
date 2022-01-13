@@ -7,7 +7,11 @@ class cpushrot
 public:
     cpushrot();
 public:
-    void move(); //beweegt pushrod heen en weer
+    void togglePushrod(); // switches pushrod from high to low or low to high
+    bool getStatusPushrod(); // returns pushrod status, returns 0 if low, 1 if high
+
+private:
+    bool pushrodHigh; // 0 if low, 1 if high
 };
 
 #endif // CPUSHROT_H

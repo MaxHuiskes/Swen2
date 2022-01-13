@@ -2,28 +2,38 @@
 #include "cblock.h"
 #include <QWidget>
 
-cBelt::cBelt()
+cBelt::cBelt(int nr)
 {
+    beltnr = nr;
+    if (beltnr == 1){
 
+    }
 }
 void cBelt::toggleMotor(){  // toggle motor
-    cmotor motor(bl );
-    motor.moveMotor();
+    motor.toggleMotor();
 }
 
 
 void cBelt::setBlock(cblock * blck){ // set block on belt
-
     if (sensor == 0){
         block = blck->print;
         bl = blck;
-        bl->detector = 0;
         toggleMotor();
     }
+    // if belt contains a block -> belt is occupied
+    setBeltStatus(1);
 }
 
-void cBelt::setBelt(int nr){  // set belt number
-    beltnr = nr;
+int cBelt::getBeltNr(){  // get belt number
+    return beltnr;
+}
+
+bool cBelt::getBeltStatus(){
+    return beltStatus;
+}
+
+void cBelt::setBeltStatus(bool newStatus){
+    beltStatus = newStatus;
 }
 
 // modbus TCP voor connectie tussen controller en ui

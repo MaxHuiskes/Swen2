@@ -1,0 +1,14 @@
+debug/ibelt.o
+debug/quibelt.o
+debug/cbelt.o
+debug/quibelt.o
+debug/cblock.o
+debug/clift.o
+debug/cmotor.o
+debug/cpushrot.o
+debug/main.o
+debug/mainwindow.o
+debug/sensor.o
+debug/moc_cmotor.o
+debug/moc_mainwindow.o
+debug/moc_quibelt.o

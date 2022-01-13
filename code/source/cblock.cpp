@@ -5,30 +5,21 @@ cblock::cblock(QString info) // create right info to block
     print = info;
 
     if (info  == lowP){
-        materiaal = 1;
-        size = 1;
+        metal = 0;
+        high = 0;
     }
-    if (info == middleP){
-        materiaal = 1;
-        size = 2;
+    else if (info == highP){
+        metal = 0;
+        high = 1;
     }
-    if (info == highP){
-        materiaal = 1;
-        size = 3;
+    else if (info  == lowM){
+        metal = 1;
+        high = 0;
     }
-    if (info  == lowM){
-        materiaal = 2;
-        size = 1;
+    else if (info == highM){
+        metal = 1;
+        high = 1;
     }
-    if (info == middleM){
-        materiaal = 2;
-        size = 2;
-    }
-    if (info == highM){
-        materiaal = 2;
-        size = 3;
-    }
-
 }
 
 

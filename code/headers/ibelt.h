@@ -10,10 +10,9 @@ public:
 
 public:
 
-
     virtual void toggleMotor() = 0;
     virtual void setBlock(cblock * blck) = 0;
-    virtual void setBelt(int nr) = 0;
+    virtual int  getBeltNr() = 0;
 
 
 };

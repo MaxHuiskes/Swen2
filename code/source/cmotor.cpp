@@ -4,22 +4,29 @@
 #include "cblock.h"
 #include "sensor.h"
 
-cmotor::cmotor(cblock * block )
-    : mLabel (this  )
+cmotor::cmotor()
 {
-    blck = block;
+    motorStatusOn = 0;
 }
 
-void cmotor::moveMotor(){
+bool cmotor::motorNotifySensor(){
     for (int i = 0; i < 65001; i ++){
         if (i == 65000){
-            printLabel();
+            return 1;
         }
+    }
+    return 0;
+}
+
+void cmotor::toggleMotor(){
+    if(motorStatusOn == 1){
+        motorStatusOn = 0;
+    }
+    else if(motorStatusOn == 0){
+        motorStatusOn = 1;
     }
 }
 
-void cmotor::printLabel(){
-    blck->detector = 1;
-    sensor sens;
-    sens.detect();
+bool cmotor::getMotorStatus(){
+    return motorStatusOn;
 }

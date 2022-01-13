@@ -12,12 +12,12 @@ void cLift::activate(){
 }
 
 void cLift::checkDown(){
-    if (sensor.detect() == 1)
+    if (sensor.getSensorValue() == 1)
         goUp(); //wanneer de sensor onderaan wat detecteert start goUp
 }
 
 void cLift::goUp(){
-    pushrod.move(); //duwt het blokje weg
+    pushrod.togglePushrod(); //duwt het blokje weg
    // motor.moveMotor(1); //lift omhoog
     isBlok = 0; //status geen bokje op lift
 }

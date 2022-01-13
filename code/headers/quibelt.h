@@ -13,7 +13,6 @@ class QUIBelt : public QWidget
 public:
     explicit QUIBelt(QWidget *parent);
     void setBelt(cBelt*);
-    void setButton(cblock*);
     void setLabel(cblock*);
 
 private:
