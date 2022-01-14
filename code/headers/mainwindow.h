@@ -25,6 +25,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent);
     ~MainWindow();
+    void setBlockBelt2();
+    void setBlockBelt3();
 
 
 public slots:
@@ -34,16 +36,22 @@ public slots:
     void on_lowM_clicked();
     void on_highM_clicked();
     void onReadyRead();
+    void checkBelt();
 
 private:
     Ui::MainWindow *ui;
-    // cBelt *mBelt;
-    QUIBelt *mQUIbelt;
+    cBelt *mBelt1;
+    cBelt *mBelt2;
+    cBelt *mBelt3;
+    QUIBelt *mQUIbelt1;
+    QUIBelt *mQUIbelt2;
+    QUIBelt *mQUIbelt3;
     QCheckBox *lowP;
     QCheckBox *highP;
     QCheckBox *lowM;
     QCheckBox *highM;
     cblock *Block;
+    cblock *noBlock;
     QTcpSocket  _socket;
 
 };

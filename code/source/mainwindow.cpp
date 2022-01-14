@@ -27,30 +27,39 @@ MainWindow::MainWindow(QWidget *parent)
     ui->menubar->hide();
         
     cBelt *belt1 = new cBelt(1); //  create first belt
+    mBelt1 = belt1;
         
     cBelt *belt2 = new cBelt(2); // create second belt
+    mBelt2  = belt2;
         
     cBelt *belt3 = new cBelt(3); // creat third belt
+    mBelt3 = belt3;
 
     QUIBelt* invoerband1;  // create info for first belt
     invoerband1 = new QUIBelt(this);
     invoerband1->setBelt(belt1);
     invoerband1->setGeometry(10,30,200,200);
-    mQUIbelt = invoerband1;
+    mQUIbelt1 = invoerband1;
    
     QUIBelt* invoerband2; // create info for second belt
     invoerband2 = new QUIBelt(this);
     invoerband2->setBelt(belt2);
     invoerband2->setGeometry(150,30,200,200);
+    mQUIbelt2 = invoerband2;
     
     QUIBelt* invoerband3; // create info for thirth belt
     invoerband3 = new QUIBelt(this);
     invoerband3->setBelt(belt3);
     invoerband3->setGeometry(290,30,200,200);
+    mQUIbelt3 = invoerband3;
 
     QPushButton *button = new QPushButton("Set block on first belt", this);  // create push button for block on first belt
     button->connect(button, &QPushButton::pressed, this, &MainWindow::on_clicked);
     button->setGeometry(639,500,121,41);
+
+    QPushButton *buttonCheck = new QPushButton("check", this);
+    buttonCheck->connect(buttonCheck, &QPushButton::pressed, this, &MainWindow::checkBelt);
+    buttonCheck->setGeometry(300,500,121,41);
 
     lowP = new QCheckBox("Low plastic", this); // create check box for plastic low
     lowP->setGeometry(439,500,121,19);
@@ -77,6 +86,7 @@ MainWindow::MainWindow(QWidget *parent)
     check->addButton(highP);
     check->addButton(lowM);
     check->addButton(highM);
+    noBlock = new cblock("No Block");
 }
 void MainWindow::onReadyRead() // gives status back to sever
 {
@@ -96,7 +106,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_clicked()  // click on button
 {
-    mQUIbelt->setLabel(Block);
+    mQUIbelt1->setLabel(Block);
 }
 void MainWindow::on_lowP_clicked() // select block
 {
@@ -114,4 +124,31 @@ void MainWindow::on_highM_clicked() // select block
 {
     Block = new cblock("High metal");
 }
+void MainWindow::checkBelt(){
 
+    if (mBelt3->getOccupiedStatus() == 1 && mBelt2->getBeltStatus() == 1){
+        mQUIbelt3->setLabel(noBlock);
+        mBelt3->setOccupiedStatus(0);
+        mBelt3->setBeltStatus(0);
+    }
+
+    if(mBelt2->getOccupiedStatus() == 1 && mBelt1->getBeltStatus() == 1){
+        setBlockBelt3();
+    }
+
+    if (mBelt1->getOccupiedStatus() == 1 ){
+        setBlockBelt2();
+    }
+}
+void MainWindow::setBlockBelt2(){
+    mQUIbelt2->setLabel(mBelt1->bl);
+    mQUIbelt1->setLabel(noBlock);
+    mBelt1->setOccupiedStatus(0);
+    mBelt1->setBeltStatus(0);
+}
+
+void MainWindow::setBlockBelt3(){
+    mQUIbelt3->setLabel(mBelt2->bl);
+    mQUIbelt2->setLabel(noBlock);
+    mBelt2->setOccupiedStatus(0);
+}

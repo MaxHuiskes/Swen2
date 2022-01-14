@@ -21,10 +21,11 @@ void cBelt::setBlock(cblock * blck){ // set block on belt
     if (allowBlock == 0){
         block = blck->print;
         bl = blck;
-        toggleMotor();
+        //toggleMotor();
     }
     // if belt contains a block -> belt is occupied
     setBeltStatus(1);
+    setOccupiedStatus(1);
 }
 
 int cBelt::getBeltNr(){  // get belt number
@@ -43,6 +44,13 @@ void cBelt::receiveBlock(bool receiving){
 
 }
 
+bool cBelt::getOccupiedStatus(){
+    return allowBlock;
+}
+
+void cBelt::setOccupiedStatus(bool status){
+    allowBlock = status;
+}
 // modbus TCP voor connectie tussen controller en ui
 
 

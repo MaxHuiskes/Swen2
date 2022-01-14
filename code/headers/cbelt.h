@@ -17,6 +17,7 @@ public:
     cBelt(int nr);
 
     QString block = "No block";
+    cblock *bl;
 
     int  getBeltNr();
     void toggleMotor();
@@ -26,16 +27,18 @@ public:
     void setBeltStatus(bool newStatus); // sets belt status to 1 or 0
 
     void receiveBlock(bool receiving);
+    bool getOccupiedStatus();
+    void setOccupiedStatus(bool);
 
 private:
     QWidget *parent;
     cmotor motor;
-    cblock *bl;
+
     sensor lowSensor;
     sensor *highSensor = nullptr;
     sensor *metalSensor = nullptr;
     int beltnr = 0;
-    int allowBlock = 0;
+    bool allowBlock = 0;
     bool beltStatus; // 0 if not occupied, 1 if occupied
 };
 
