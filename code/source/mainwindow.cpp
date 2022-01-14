@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
     lowP->setCheckable(true);
 
     highP = new QCheckBox("High plastic", this); //  create check box for plastic high
-    highP->setGeometry(439,530,121,19);
+    highP->setGeometry(439,515,121,19);
     highP->connect(highP, &QPushButton::pressed, this , &MainWindow::on_highP_clicked);
     highP->setCheckable(true);
 
@@ -77,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent)
     lowM->setCheckable(true);
 
     highM = new QCheckBox("High metal", this); // create check box for metal high
-    highM->setGeometry(539,530,121,19);
+    highM->setGeometry(539,515,121,19);
     highM->connect(highM, &QPushButton::pressed, this , &MainWindow::on_highM_clicked);
     highM->setCheckable(true);
 
@@ -126,29 +126,30 @@ void MainWindow::on_highM_clicked() // select block
 }
 void MainWindow::checkBelt(){
 
-    if (mBelt3->getOccupiedStatus() == 1 && mBelt2->getBeltStatus() == 1){
-        mQUIbelt3->setLabel(noBlock);
+    if (mBelt3->getOccupiedStatus() == 1 ){ // looks if belt is occupied
+        mQUIbelt3->setNoBlock(noBlock);       // set belt to no block
         mBelt3->setOccupiedStatus(0);
         mBelt3->setBeltStatus(0);
     }
 
-    if(mBelt2->getOccupiedStatus() == 1 && mBelt1->getBeltStatus() == 1){
-        setBlockBelt3();
+    if(mBelt2->getOccupiedStatus() == 1 ){
+        mQUIbelt3->setLabel(mBelt2->bl);
+        mQUIbelt2->setNoBlock(noBlock);
+        mBelt2->setOccupiedStatus(0);
+        mBelt2->setBeltStatus(0);
     }
 
     if (mBelt1->getOccupiedStatus() == 1 ){
-        setBlockBelt2();
+        mQUIbelt2->setLabel(mBelt1->bl);
+        mQUIbelt1->setNoBlock(noBlock);
+        mBelt1->setOccupiedStatus(0);
+        mBelt1->setBeltStatus(0);
     }
 }
 void MainWindow::setBlockBelt2(){
-    mQUIbelt2->setLabel(mBelt1->bl);
-    mQUIbelt1->setLabel(noBlock);
-    mBelt1->setOccupiedStatus(0);
-    mBelt1->setBeltStatus(0);
+
 }
 
 void MainWindow::setBlockBelt3(){
-    mQUIbelt3->setLabel(mBelt2->bl);
-    mQUIbelt2->setLabel(noBlock);
-    mBelt2->setOccupiedStatus(0);
+
 }

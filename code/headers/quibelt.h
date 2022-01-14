@@ -14,6 +14,7 @@ public:
     QUIBelt(QWidget *parent);
     void setBelt(cBelt*);
     void setLabel(cblock*);
+    void setNoBlock(cblock*);
 
 private:
     QLabel mLabel;

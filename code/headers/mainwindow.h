@@ -25,9 +25,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent);
     ~MainWindow();
-    void setBlockBelt2();
-    void setBlockBelt3();
-
 
 public slots:
     void on_clicked();
