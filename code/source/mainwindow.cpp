@@ -132,24 +132,18 @@ void MainWindow::checkBelt(){
         mBelt3->setBeltStatus(0);
     }
 
-    if(mBelt2->getOccupiedStatus() == 1 ){
+    if(mBelt2->getOccupiedStatus() == 1 && mBelt3->getOccupiedStatus() == 0 ){
         mQUIbelt3->setLabel(mBelt2->bl);
         mQUIbelt2->setNoBlock(noBlock);
         mBelt2->setOccupiedStatus(0);
         mBelt2->setBeltStatus(0);
     }
 
-    if (mBelt1->getOccupiedStatus() == 1 ){
+    if (mBelt1->getOccupiedStatus() == 1 && mBelt2->getOccupiedStatus() == 0){
         mQUIbelt2->setLabel(mBelt1->bl);
         mQUIbelt1->setNoBlock(noBlock);
         mBelt1->setOccupiedStatus(0);
         mBelt1->setBeltStatus(0);
     }
 }
-void MainWindow::setBlockBelt2(){
 
-}
-
-void MainWindow::setBlockBelt3(){
-
-}

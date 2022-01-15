@@ -19,14 +19,14 @@ void QUIBelt::setBelt(cBelt *blt){      // set belt info to mainwindow
 }
 void QUIBelt::setLabel(cblock *block){      // set block and change belt info
     if (mBelt->getOccupiedStatus()==0){
-    mBelt->setBlock(block);
+        mBelt->setBlock(block);
 
-    QString beltinfo ="Conveyor belt number " +
-            QString::number(mBelt->getBeltNr()) +
-            '\n' + "Block on Conveyor belt: " +
-            '\n' + block->print;
+        QString beltinfo ="Conveyor belt number " +
+                QString::number(mBelt->getBeltNr()) +
+                '\n' + "Block on Conveyor belt: " +
+                '\n' + block->print;
 
-    mLabel.setText(beltinfo);
+        mLabel.setText(beltinfo);
     }
 }
 void QUIBelt::setNoBlock(cblock *block){      // set no block and change belt info

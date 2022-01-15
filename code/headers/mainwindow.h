@@ -1,12 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
 #include <QTcpSocket>
-
 #include <QMainWindow>
-#include "cbelt.h"
-//class cBelt;
+
+class cBelt;
 
 class QUIBelt;
 
