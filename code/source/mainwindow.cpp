@@ -23,15 +23,16 @@ MainWindow::MainWindow(QWidget *parent)
     _socket.connectToHost(QHostAddress("127.0.0.1"), 4242);
     connect(&_socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
 
+
     // start normal program
     ui->menubar->hide();
-        
+
     cBelt *belt1 = new cBelt(1); //  create first belt
     mBelt1 = belt1;
-        
+
     cBelt *belt2 = new cBelt(2); // create second belt
     mBelt2  = belt2;
-        
+
     cBelt *belt3 = new cBelt(3); // creat third belt
     mBelt3 = belt3;
 
@@ -40,13 +41,13 @@ MainWindow::MainWindow(QWidget *parent)
     invoerband1->setBelt(belt1);
     invoerband1->setGeometry(10,30,200,200);
     mQUIbelt1 = invoerband1;
-   
+
     QUIBelt* invoerband2; // create info for second belt
     invoerband2 = new QUIBelt(this);
     invoerband2->setBelt(belt2);
     invoerband2->setGeometry(150,30,200,200);
     mQUIbelt2 = invoerband2;
-    
+
     QUIBelt* invoerband3; // create info for thirth belt
     invoerband3 = new QUIBelt(this);
     invoerband3->setBelt(belt3);
@@ -92,7 +93,12 @@ void MainWindow::onReadyRead() // gives status back to sever
 {
     QByteArray datas = _socket.readAll(); //recieved data from server
     qDebug() << datas;
-    _socket.write(QByteArray("ok !\n")); // sends status client to server
+    if (datas == "ask"){
+        QString s = "belt1:" + mBelt1->block;
+        _socket.write(QByteArray::fromStdString(s.toStdString()));
+    } else if (datas == "::ffff:127.0.0.1 connected to server !" ) {
+        _socket.write(QByteArray("ok !\n")); // sends status client to server
+    }
 }
 
 MainWindow::~MainWindow()

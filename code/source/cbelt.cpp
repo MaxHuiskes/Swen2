@@ -51,6 +51,6 @@ bool cBelt::getOccupiedStatus(){
 void cBelt::setOccupiedStatus(bool status){
     allowBlock = status;
 }
-// modbus TCP voor connectie tussen controller en ui
+
 
 
