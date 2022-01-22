@@ -87,6 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
     check->addButton(highP);
     check->addButton(lowM);
     check->addButton(highM);
+
     noBlock = new cblock("No Block");
 }
 void MainWindow::onReadyRead() // gives status back to sever
@@ -133,23 +134,23 @@ void MainWindow::on_highM_clicked() // select block
 void MainWindow::checkBelt(){
 
     if (mBelt3->getOccupiedStatus() == 1 ){ // looks if belt is occupied
+        mBelt3->setOccupiedStatus(0);
         mQUIbelt3->setNoBlock(noBlock);       // set belt to no block
         mBelt3->setOccupiedStatus(0);
-        mBelt3->setBeltStatus(0);
     }
 
     if(mBelt2->getOccupiedStatus() == 1 && mBelt3->getOccupiedStatus() == 0 ){
         mQUIbelt3->setLabel(mBelt2->bl);
+        mBelt2->setOccupiedStatus(0);
         mQUIbelt2->setNoBlock(noBlock);
         mBelt2->setOccupiedStatus(0);
-        mBelt2->setBeltStatus(0);
     }
 
     if (mBelt1->getOccupiedStatus() == 1 && mBelt2->getOccupiedStatus() == 0){
         mQUIbelt2->setLabel(mBelt1->bl);
+        mBelt1->setOccupiedStatus(0);
         mQUIbelt1->setNoBlock(noBlock);
         mBelt1->setOccupiedStatus(0);
-        mBelt1->setBeltStatus(0);
     }
 }
 

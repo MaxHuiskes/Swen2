@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->label->setText("Server online!!");
     //create connection
     _server.listen(QHostAddress::Any, 4242);
     connect(&_server, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
@@ -29,6 +30,10 @@ void MainWindow::onNewConnection()
     connect(clientSocket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));   // looks if connection ready
     //connect(clientSocket, SIGNAL(readyRead()), this, SLOT(askData()));
     connect(clientSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState)), this, SLOT(onSocketStateChanged(QAbstractSocket::SocketState))); // looks if state of client changes
+
+    QString s = "Server online!!\nConnectet to client " + clientSocket->peerAddress().toString();
+    ui->label->setText(s);
+
     _sockets.push_back(clientSocket); //checks client
     for (QTcpSocket* socket : _sockets) {
         socket->write(QByteArray::fromStdString(clientSocket->peerAddress().toString().toStdString() + " connected to server !")); // data send to client

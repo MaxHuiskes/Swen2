@@ -24,20 +24,11 @@ void cBelt::setBlock(cblock * blck){ // set block on belt
         //toggleMotor();
     }
     // if belt contains a block -> belt is occupied
-    setBeltStatus(1);
     setOccupiedStatus(1);
 }
 
 int cBelt::getBeltNr(){  // get belt number
     return beltnr;
-}
-
-bool cBelt::getBeltStatus(){
-    return beltStatus;
-}
-
-void cBelt::setBeltStatus(bool newStatus){
-    beltStatus = newStatus;
 }
 
 void cBelt::receiveBlock(bool receiving){
