@@ -23,12 +23,14 @@ public slots:
     void onNewConnection();
     void onSocketStateChanged(QAbstractSocket::SocketState socketState);
     void onReadyRead();
+    void delay(int);
 
 private:
     Ui::MainWindow *ui;
     QTcpServer  _server;
     QList<QTcpSocket*>  _sockets;
     QByteArray datas;
+    bool ask;
 };
 
 // https://riptutorial.com/qt/example/29874/tcp-server

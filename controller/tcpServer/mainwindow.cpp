@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QHostAddress>
 #include <QAbstractSocket>
+#include <QTime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -56,11 +57,20 @@ void MainWindow::onReadyRead() // send data to client
     datas = sender->readAll();
     qDebug() << datas;
     if (datas == "ok !\n"){
+        ask = true;
         for (QTcpSocket* socket : _sockets) {
             if (socket != sender)
                 socket->write(QByteArray::fromStdString("ask"));
         }
-    }else{
+    } else if(datas.contains("belt1Low:1")){
+        ask = false;
+        for (QTcpSocket* socket : _sockets) {
+            if (socket != sender)
+                socket->write(QByteArray::fromStdString("checkBelt"));
+        }
+
+    } else{
+        ask = true;
         datas = "\n";
         for (QTcpSocket* socket : _sockets) {
             if (socket != sender)
@@ -71,9 +81,23 @@ void MainWindow::onReadyRead() // send data to client
 
 void MainWindow::askData(){
     QTcpSocket* sender = static_cast<QTcpSocket*>(QObject::sender());
-    for (QTcpSocket* socket : _sockets) {
-        if (socket != sender)
-            socket->write(QByteArray::fromStdString("ask"));
+    if (ask == true){
+        for (QTcpSocket* socket : _sockets) {
+            if (socket != sender)
+                socket->write(QByteArray::fromStdString("ask"));
+        }
+    } else if(ask == false){
+        for (QTcpSocket* socket : _sockets) {
+            if (socket != sender)
+                socket->write(QByteArray::fromStdString("checkBelt"));
+        }
+        ask = true;
     }
 }
 
+void MainWindow::delay(int secs)
+{
+    QTime dieTime= QTime::currentTime().addSecs(secs);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}

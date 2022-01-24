@@ -22,13 +22,15 @@ public:
     int  getBeltNr();
     void toggleMotor();
     void setBlock(cblock *blck);
-
     bool getBeltStatus(); // returns 1 if belt is occupied, 0 if belt is not occupied
     void setBeltStatus(bool newStatus); // sets belt status to 1 or 0
-
     void receiveBlock(bool receiving);
     bool getOccupiedStatus();
     void setOccupiedStatus(bool);
+    int getLowSensorValue();
+    int getHighSensorValue();
+    int getMetalSensorValue();
+    void resetSensor();
 
 private:
     QWidget *parent;

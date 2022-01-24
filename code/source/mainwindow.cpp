@@ -95,10 +95,12 @@ void MainWindow::onReadyRead() // gives status back to sever
     QByteArray datas = _socket.readAll(); //recieved data from server
     qDebug() << datas;
     if (datas == "ask"){
-        QString s = "belt1:" + mBelt1->block;
+        QString s = "belt1Low:" + QString::number(mBelt1->getLowSensorValue());
         _socket.write(QByteArray::fromStdString(s.toStdString()));
     } else if (datas == "::ffff:127.0.0.1 connected to server !" ) {
         _socket.write(QByteArray("ok !\n")); // sends status client to server
+    } else if (datas == "checkBelt"){
+        checkBelt();
     }
 }
 
@@ -137,6 +139,7 @@ void MainWindow::checkBelt(){
         mBelt3->setOccupiedStatus(0);
         mQUIbelt3->setNoBlock(noBlock);       // set belt to no block
         mBelt3->setOccupiedStatus(0);
+        mBelt3->resetSensor();
     }
 
     if(mBelt2->getOccupiedStatus() == 1 && mBelt3->getOccupiedStatus() == 0 ){
@@ -144,13 +147,16 @@ void MainWindow::checkBelt(){
         mBelt2->setOccupiedStatus(0);
         mQUIbelt2->setNoBlock(noBlock);
         mBelt2->setOccupiedStatus(0);
+        mBelt2->resetSensor();
     }
 
     if (mBelt1->getOccupiedStatus() == 1 && mBelt2->getOccupiedStatus() == 0){
         mQUIbelt2->setLabel(mBelt1->bl);
         mBelt1->setOccupiedStatus(0);
         mQUIbelt1->setNoBlock(noBlock);
+        mBelt1->resetSensor();
         mBelt1->setOccupiedStatus(0);
+
     }
 }
 
