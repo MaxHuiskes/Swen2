@@ -31,8 +31,7 @@ void MainWindow::onNewConnection()
     connect(clientSocket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));   // looks if connection ready
     //connect(clientSocket, SIGNAL(readyRead()), this, SLOT(askData()));
     connect(clientSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState)), this, SLOT(onSocketStateChanged(QAbstractSocket::SocketState))); // looks if state of client changes
-
-    QString s = "Server online!!\nConnectet to client " + clientSocket->peerAddress().toString();
+    QString s = "Server online!!\nConnected to client " + clientSocket->peerAddress().toString();
     ui->label->setText(s);
 
     _sockets.push_back(clientSocket); //checks client
@@ -48,6 +47,8 @@ void MainWindow::onSocketStateChanged(QAbstractSocket::SocketState socketState) 
         QTcpSocket* sender = static_cast<QTcpSocket*>(QObject::sender());
         qDebug() << "Client disconected " + sender->peerAddress().toString() << endl;
         _sockets.removeOne(sender);
+        QString s = "Server online!!\nDisconnected to client " + sender->peerAddress().toString();
+        ui->label->setText(s);
     }
 }
 
@@ -58,24 +59,19 @@ void MainWindow::onReadyRead() // send data to client
     qDebug() << datas;
     if (datas == "ok !\n"){
         ask = true;
-        for (QTcpSocket* socket : _sockets) {
-            if (socket != sender)
-                socket->write(QByteArray::fromStdString("ask"));
-        }
+
     } else if(datas.contains("belt1Low:1")){
         ask = false;
-        for (QTcpSocket* socket : _sockets) {
-            if (socket != sender)
-                socket->write(QByteArray::fromStdString("checkBelt"));
-        }
+
+    } else if(datas.contains("belt2Low:1")){
+        ask = false;
+
+    } else if(datas.contains("belt3Low:1")){
+        ask = false;
 
     } else{
         ask = true;
-        datas = "\n";
-        for (QTcpSocket* socket : _sockets) {
-            if (socket != sender)
-                socket->write(QByteArray::fromStdString(sender->peerAddress().toString().toStdString() + ": " + datas.toStdString()));
-        }
+
     }
 }
 

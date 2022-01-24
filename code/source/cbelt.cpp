@@ -9,36 +9,50 @@ cBelt::cBelt(int nr)
     beltnr = nr;
     if(beltnr == 1){
         highSensor = new sensor;
+        metalSensor = new sensor;
     }
+
 }
 
 void cBelt::toggleMotor(){  // toggle motor
     motor.toggleMotor();
+    // emit motorChange(getMotorStatus());
 }
 
 
 void cBelt::setBlock(cblock * blck){ // set block on belt
     if (allowBlock == 0){
-        if(beltnr==1){
-            if (blck->high == true){
-                highSensor->setSensorValue(true);
-            }
-            lowSensor.setSensorValue(true);
-        }
         block = blck->print;
         bl = blck;
-        //toggleMotor();
+
+        toggleMotor();
+        //motor.motorNotifySensor(); // is niet nodig is al 5s delay
+
+        if (beltnr == 1) {
+            if (bl->high == true){
+                highSensor->setSensorValue(true);
+            }
+            if (bl->metal == true){
+                metalSensor->setSensorValue(true);
+            }
+        }
+        lowSensor.setSensorValue(true);
+
+        toggleMotor();
+
     }
+
     // if belt contains a block -> belt is occupied
     setOccupiedStatus(1);
 }
 
-int cBelt::getBeltNr(){  // get belt number
-    return beltnr;
+void cBelt::setNoBlock(cblock* blck){
+    block = blck->print;
+    bl = blck;
 }
 
-void cBelt::receiveBlock(bool receiving){
-
+int cBelt::getBeltNr(){  // get belt number
+    return beltnr;
 }
 
 bool cBelt::getOccupiedStatus(){
@@ -64,6 +78,11 @@ void cBelt::resetSensor(){
     lowSensor.setSensorValue(0);
     if (beltnr == 1){
         highSensor->setSensorValue(0);
+        metalSensor->setSensorValue(0);
     }
-    //metalSensor->setSensorValue(0);
+
+}
+
+int cBelt::getMotorStatus(){
+    return motor.getMotorStatus();
 }

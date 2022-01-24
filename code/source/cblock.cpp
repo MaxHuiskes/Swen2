@@ -19,9 +19,11 @@ cblock::cblock(QString info) // create right info to block
     else if (info == highM){
         metal = 1;
         high = 1;
-    }else if(info == "No block"){
-        metal = NULL;
-        high = NULL;
+    }
+    else if(info == "No block"){
+        metal = 0;
+        high = 0;
+        noBlock = 1;
     }
 }
 

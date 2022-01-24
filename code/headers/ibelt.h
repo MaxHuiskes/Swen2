@@ -1,8 +1,9 @@
 #ifndef IBELT_H
 #define IBELT_H
 #include <QString>
+#include <QObject>
 class cblock;
-class iBelt
+class iBelt : public QObject
 {
 public:
     iBelt(){}

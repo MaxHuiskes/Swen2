@@ -30,6 +30,7 @@ private:
     QTcpServer  _server;
     QList<QTcpSocket*>  _sockets;
     QByteArray datas;
+    QString log;
     bool ask;
 };
 

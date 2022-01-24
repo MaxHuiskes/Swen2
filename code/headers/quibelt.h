@@ -11,7 +11,7 @@ class QUIBelt : public QWidget
 {
     Q_OBJECT
 public:
-    QUIBelt(QWidget *parent);
+    QUIBelt(QWidget *parent, cBelt*);
     void setBelt(cBelt*);
     void setLabel(cblock*);
     void setNoBlock(cblock*);
@@ -19,8 +19,11 @@ public:
 private:
     QLabel mLabel;
     cBelt  *mBelt;
+public slots:
+    void updateLabel(int);
 
 signals:
+    bool motorStatus();
 
 };
 

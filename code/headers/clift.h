@@ -5,8 +5,7 @@
 #include "sensor.h"
 
 // edit: afleiden van IBelt
-class cLift
-{
+class cLift{
 public:
     cLift();
 public:

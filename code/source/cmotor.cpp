@@ -1,5 +1,5 @@
 #include "headers/cmotor.h"
-#include <QTimer>
+#include <QTime>
 #include <QDebug>
 #include "cblock.h"
 #include "sensor.h"
@@ -9,13 +9,11 @@ cmotor::cmotor()
     motorStatusOn = 0;
 }
 
-bool cmotor::motorNotifySensor(){
-    for (int i = 0; i < 65001; i ++){
-        if (i == 65000){
-            return 1;
-        }
+void cmotor::motorNotifySensor(){
+    QTime dieTime= QTime::currentTime().addSecs(3);
+    while (QTime::currentTime() < dieTime){
+    // do notihing
     }
-    return 0;
 }
 
 void cmotor::toggleMotor(){
@@ -24,9 +22,11 @@ void cmotor::toggleMotor(){
     }
     else if(motorStatusOn == 0){
         motorStatusOn = 1;
+
     }
 }
 
 bool cmotor::getMotorStatus(){
     return motorStatusOn;
+
 }
