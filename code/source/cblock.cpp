@@ -7,18 +7,22 @@ cblock::cblock(QString info) // create right info to block
     if (info  == lowP){
         metal = 0;
         high = 0;
+        noBlock = 0;
     }
     else if (info == highP){
         metal = 0;
         high = 1;
+        noBlock = 0;
     }
     else if (info  == lowM){
         metal = 1;
         high = 0;
+        noBlock = 0;
     }
     else if (info == highM){
         metal = 1;
         high = 1;
+        noBlock = 0;
     }
     else if(info == "No block"){
         metal = 0;

@@ -12,6 +12,8 @@ class QCheckBox;
 
 class cblock;
 
+class cLift;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -23,6 +25,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent);
     ~MainWindow();
+    void checkSorteer();
 
 public slots:
     void on_clicked();
@@ -38,7 +41,7 @@ private:
     cBelt *mBelt1;
     cBelt *mBelt2;
     cBelt *mBelt3;
-    cBelt *mLift;
+    cLift *mLift;
     cBelt *mBelt5;
     cBelt *mSort;
     cBelt *mStore;
@@ -64,6 +67,7 @@ private:
     cblock *Block;
     cblock *noBlock;
     QTcpSocket  _socket;
+    std::string order;
 
 };
 #endif // MAINWINDOW_H

@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _server.listen(QHostAddress::Any, 4242);
     connect(&_server, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
     ask = true;
+    order = "Low plastic; Low metal; High metal; High plastic; High plastic; Low metal; Low plastic; High metal;";
 }
 
 MainWindow::~MainWindow()
@@ -37,7 +38,7 @@ void MainWindow::onNewConnection()
 
     _sockets.push_back(clientSocket); //checks client
     for (QTcpSocket* socket : _sockets) {
-        socket->write(QByteArray::fromStdString(clientSocket->peerAddress().toString().toStdString() + " connected to server !")); // data send to client
+        socket->write(QByteArray::fromStdString(order.toStdString())); // data send to client
     }
 }
 

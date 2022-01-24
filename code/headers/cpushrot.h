@@ -8,7 +8,8 @@ public:
     cpushrot();
     virtual ~cpushrot();
 public:
-    void togglePushrod();       // switches pushrod from high to low or low to high
+    void in();       // switches pushrod from high to low or low to high
+    void out();
     bool getStatusPushrod();    // returns pushrod status, returns 0 if low, 1 if high
 
 private:

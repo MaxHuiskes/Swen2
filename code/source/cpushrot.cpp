@@ -8,15 +8,15 @@ cpushrot::cpushrot()
 cpushrot::~cpushrot(){
 
 }
-void cpushrot::togglePushrod(){
-    if(pushrodHigh == 1){
-        pushrodHigh = 0;
-    }
-    else if(pushrodHigh == 0){
-        pushrodHigh = 1;
-    }
+void cpushrot::in(){
+    pushrodHigh = 0;
+
 }
 
 bool cpushrot::getStatusPushrod(){
     return pushrodHigh;
+}
+
+void cpushrot::out(){
+    pushrodHigh = 1;
 }

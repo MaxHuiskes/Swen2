@@ -19,7 +19,6 @@ cBelt::~cBelt(){
         delete highSensor;
         delete metalSensor;
     }
-
 }
 
 void cBelt::toggleMotor(){                      // toggle motor

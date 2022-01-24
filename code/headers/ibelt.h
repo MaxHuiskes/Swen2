@@ -15,11 +15,7 @@ public:
     virtual void    setBlock(cblock * blck)        = 0;
     virtual int     getBeltNr()                    = 0;
     virtual int     getLowSensorValue()            = 0;
-    virtual int     getHighSensorValue()           = 0;
-    virtual int     getMetalSensorValue()          = 0;
     virtual void    setNoBlock(cblock *blck)       = 0;
-    virtual void    blockOut()                     = 0;
-    virtual int     getBlockCount()                = 0;
     virtual bool    getOccupiedStatus()            = 0;
     virtual void    setOccupiedStatus(bool)        = 0;
     virtual int     getMotorStatus()               = 0;

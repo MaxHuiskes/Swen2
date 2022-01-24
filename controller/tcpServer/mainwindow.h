@@ -33,6 +33,8 @@ private:
     QByteArray datas;
     QString log;
     bool ask;
+    QString order;
+
 };
 
 // https://riptutorial.com/qt/example/29874/tcp-server
