@@ -8,7 +8,8 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     while (true){
-        w.delay(5);
+        if (w.getAsk() == true)
+            w.delay(5);
         w.askData();
     }
     w.show();

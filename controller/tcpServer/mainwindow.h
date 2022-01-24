@@ -24,6 +24,7 @@ public slots:
     void onSocketStateChanged(QAbstractSocket::SocketState socketState);
     void onReadyRead();
     void delay(int);
+    bool getAsk();
 
 private:
     Ui::MainWindow *ui;

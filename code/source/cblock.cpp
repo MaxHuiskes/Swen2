@@ -27,4 +27,8 @@ cblock::cblock(QString info) // create right info to block
     }
 }
 
+cblock::~cblock(){
+
+}
+
 

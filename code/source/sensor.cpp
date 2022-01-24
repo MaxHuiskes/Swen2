@@ -5,6 +5,10 @@ sensor::sensor()
     sensorValue = 0;
 }
 
+sensor::~sensor(){
+
+}
+
 bool sensor::getSensorValue() {
     return sensorValue;
 }

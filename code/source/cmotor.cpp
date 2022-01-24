@@ -9,14 +9,18 @@ cmotor::cmotor()
     motorStatusOn = 0;
 }
 
-void cmotor::motorNotifySensor(){
+cmotor::~cmotor(){
+
+}
+
+void cmotor::motorNotifySensor(){                       // motor simulator
     QTime dieTime= QTime::currentTime().addSecs(3);
     while (QTime::currentTime() < dieTime){
     // do notihing
     }
 }
 
-void cmotor::toggleMotor(){
+void cmotor::toggleMotor(){                             // toggle motor on off
     if(motorStatusOn == 1){
         motorStatusOn = 0;
     }
@@ -26,7 +30,7 @@ void cmotor::toggleMotor(){
     }
 }
 
-bool cmotor::getMotorStatus(){
+bool cmotor::getMotorStatus(){                          // returns motor status
     return motorStatusOn;
 
 }

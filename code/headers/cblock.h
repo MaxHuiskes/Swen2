@@ -6,6 +6,7 @@ class cblock
 {
 public:
     cblock(QString info);
+    virtual ~cblock();
 
 public:
 

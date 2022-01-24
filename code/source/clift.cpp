@@ -6,6 +6,10 @@ cLift::cLift()
     isBlok = 0;
 }
 
+cLift::~cLift(){
+
+}
+
 void cLift::activate(){
     isBlok = 1; //status blokje op lift
    // motor.moveMotor(-1); //lift omlaag

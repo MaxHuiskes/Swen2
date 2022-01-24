@@ -8,13 +8,17 @@ QUIBelt::QUIBelt(QWidget *parent, cBelt* belt)
 {
 
 }
+
+QUIBelt::~QUIBelt(){
+
+}
+
 void QUIBelt::setBelt(cBelt *blt){      // set belt info to mainwindow
     mBelt = blt;
     QString beltinfo ="Conveyor belt number " +
             QString::number(mBelt->getBeltNr()) + '\n' +
             "Block on Conveyor belt: " +
-            '\n' + mBelt->block + '\n' +
-            "Motor on: " + QString::number(mBelt->getMotorStatus()) ;
+            '\n' + mBelt->block + '\n' ;
 
     mLabel.setText(beltinfo);
 }
@@ -25,8 +29,7 @@ void QUIBelt::setLabel(cblock *block){      // set block and change belt info
         QString beltinfo ="Conveyor belt number " +
                 QString::number(mBelt->getBeltNr()) +
                 '\n' + "Block on Conveyor belt: " +
-                '\n' + block->print+ '\n' +
-                "Motor on: " + QString::number(mBelt->getMotorStatus()) ;
+                '\n' + block->print+ '\n' ;
 
         mLabel.setText(beltinfo);
     }
@@ -37,13 +40,12 @@ void QUIBelt::setNoBlock(cblock *block){      // set no block and change belt in
     QString beltinfo ="Conveyor belt number " +
             QString::number(mBelt->getBeltNr()) +
             '\n' + "Block on Conveyor belt: " +
-            '\n' + block->print+ '\n' +
-            "Motor on: " + QString::number(mBelt->getMotorStatus()) ;
+            '\n' + block->print+ '\n' ;
 
     mLabel.setText(beltinfo);
 }
 
-void QUIBelt::updateLabel(int change){
+void QUIBelt::updateLabel(){
     QString beltinfo ="Conveyor belt number " +
             QString::number(mBelt->getBeltNr()) +
             '\n' + "Block on Conveyor belt: " +
@@ -53,7 +55,3 @@ void QUIBelt::updateLabel(int change){
     mLabel.setText(beltinfo);
 }
 
-//bool QUIBelt::motorStatus(){
-
-//    return mBelt->getMotorStatus();
-//}

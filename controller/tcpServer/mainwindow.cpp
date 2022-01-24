@@ -12,11 +12,12 @@ MainWindow::MainWindow(QWidget *parent) :
     _server(this)
 {
     ui->setupUi(this);
-
     ui->label->setText("Server online!!");
+
     //create connection
     _server.listen(QHostAddress::Any, 4242);
     connect(&_server, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
+    ask = true;
 }
 
 MainWindow::~MainWindow()
@@ -52,7 +53,7 @@ void MainWindow::onSocketStateChanged(QAbstractSocket::SocketState socketState) 
     }
 }
 
-void MainWindow::onReadyRead() // send data to client
+void MainWindow::onReadyRead()                                          // check data send by client
 {
     QTcpSocket* sender = static_cast<QTcpSocket*>(QObject::sender());
     datas = sender->readAll();
@@ -77,12 +78,12 @@ void MainWindow::onReadyRead() // send data to client
 
 void MainWindow::askData(){
     QTcpSocket* sender = static_cast<QTcpSocket*>(QObject::sender());
-    if (ask == true){
+    if (ask == true){                                                   // ask for data
         for (QTcpSocket* socket : _sockets) {
             if (socket != sender)
                 socket->write(QByteArray::fromStdString("ask"));
         }
-    } else if(ask == false){
+    } else if(ask == false){                                            // checkBelt will activate
         for (QTcpSocket* socket : _sockets) {
             if (socket != sender)
                 socket->write(QByteArray::fromStdString("checkBelt"));
@@ -91,9 +92,13 @@ void MainWindow::askData(){
     }
 }
 
-void MainWindow::delay(int secs)
+void MainWindow::delay(int secs)                                        // delay from xx seconds
 {
     QTime dieTime= QTime::currentTime().addSecs(secs);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+
+bool MainWindow::getAsk(){                                             // returns bool ask
+    return ask;
 }

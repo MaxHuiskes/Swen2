@@ -8,6 +8,7 @@
 class cLift{
 public:
     cLift();
+    virtual ~cLift();
 public:
 
     // functies die eruit moeten/aangepast moeten worden:

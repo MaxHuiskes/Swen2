@@ -5,6 +5,9 @@ cpushrot::cpushrot()
     pushrodHigh = 0;
 }
 
+cpushrot::~cpushrot(){
+
+}
 void cpushrot::togglePushrod(){
     if(pushrodHigh == 1){
         pushrodHigh = 0;

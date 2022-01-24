@@ -6,15 +6,14 @@ class sensor
 {
 public:
     sensor();
-    ~sensor() {}
+    ~sensor();
 
 public:
-    bool getSensorValue(); //geeft 1 terug als de sensor iets detecteert
-    //
-    void setSensorValue(bool newSensorValue);
+    bool getSensorValue();                      // returns sensorValue
+    void setSensorValue(bool newSensorValue);   // set sensorValue
 
 private:
-    bool sensorValue;
+    bool sensorValue;                           // if 1 detected, 0 not detected
 };
 
 #endif // SENSOR_H
