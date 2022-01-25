@@ -7,7 +7,7 @@
 cBelt::cBelt(int nr)
 {
     beltnr = nr;
-    if(beltnr == 1){
+    if(beltnr == 1 || beltnr == 6){
         highSensor = new sensor;
         metalSensor = new sensor;
     }
@@ -29,6 +29,12 @@ void cBelt::toggleMotor(){                      // toggle motor
 
 void cBelt::setBlock(cblock * blck){            // set block on belt
     if (beltOccupied == 0){
+        if (beltnr == 1 && blockCount == 8){    // max blocks on belt chain
+            setMaxBlockCount(1);
+        }
+        if (beltnr == 1 && noMoreBlock == 1){   // no more blocks placed on belts
+            return;
+        }
         block = blck->print;
         bl = blck;
 
@@ -44,6 +50,20 @@ void cBelt::setBlock(cblock * blck){            // set block on belt
                 metalSensor->setSensorValue(true);
             }
         }
+        if(beltnr == 6){
+            if (bl->high == true){
+                highSensor->setSensorValue(true);
+            } else {
+                highSensor->setSensorValue(false);
+            }
+            if (bl->metal == true){
+                metalSensor->setSensorValue(true);
+            } else {
+                metalSensor->setSensorValue(false);
+            }
+
+        }
+
         lowSensor.setSensorValue(true);
 
         toggleMotor();
@@ -97,8 +117,15 @@ int cBelt::getMotorStatus(){                    // gets and returns motor status
 
 void cBelt::blockOut(){                         // block out of belt chain
     blockCount--;
+    if (blockCount == 0 && noMoreBlock == 0){
+        setMaxBlockCount(0);
+    }
 }
 
 int cBelt::getBlockCount(){
     return blockCount;
+}
+
+void cBelt::setMaxBlockCount(bool maxBlock){
+    noMoreBlock = maxBlock;
 }

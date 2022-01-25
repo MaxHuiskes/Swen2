@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&_server, SIGNAL(newConnection()), this, SLOT(onNewConnection()));
     ask = true;
     order = "Low plastic; Low metal; High metal; High plastic; High plastic; Low metal; Low plastic; High metal;";
+    intOrder = 0;
 }
 
 MainWindow::~MainWindow()
@@ -30,8 +31,7 @@ void MainWindow::onNewConnection()
 {
     // new client created
     QTcpSocket *clientSocket = _server.nextPendingConnection();
-    connect(clientSocket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));   // looks if connection ready
-    //connect(clientSocket, SIGNAL(readyRead()), this, SLOT(askData()));
+    connect(clientSocket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));   // looks if connection read
     connect(clientSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState)), this, SLOT(onSocketStateChanged(QAbstractSocket::SocketState))); // looks if state of client changes
     QString s = "Server online!!\nConnected to client " + clientSocket->peerAddress().toString();
     ui->label->setText(s);
@@ -51,6 +51,7 @@ void MainWindow::onSocketStateChanged(QAbstractSocket::SocketState socketState) 
         _sockets.removeOne(sender);
         QString s = "Server online!!\nDisconnected to client " + sender->peerAddress().toString();
         ui->label->setText(s);
+        intOrder = 0;
     }
 }
 
@@ -59,19 +60,64 @@ void MainWindow::onReadyRead()                                          // check
     QTcpSocket* sender = static_cast<QTcpSocket*>(QObject::sender());
     datas = sender->readAll();
     qDebug() << datas;
-    if (datas == "ok !\n"){
-        ask = true;
+    if(datas.contains("liftMaxUp:4")){
+        liftUp = 1;
+    }else if(datas.contains("belt11Low:1") && datas.contains("liftStatus:0") && datas.contains("liftLow:0")){
+        liftUp = 1;
+    }else if (datas.contains("belt11Low:1") && datas.contains("liftStatus:1") && datas.contains("liftLow:0")){
+        liftUp = 0;
+    }else if(datas.contains("belt11Low:0")){
+        liftUp = 0;
+    }
+    //liftLow:0;
 
+    if (datas.contains("sortLow1:1")){
+        print = sort();
+        ask = false;
     } else if(datas.contains("belt1Low:1")){
         ask = false;
-
+        print = 8;
     } else if(datas.contains("belt2Low:1")){
         ask = false;
-
+        print = 8;
     } else if(datas.contains("belt3Low:1")){
         ask = false;
-
-    } else{
+        print = 8;
+    } else if(datas.contains("liftLow:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("belt5Low:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("sortLow1:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("belt5Low:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("storeLow:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("belt8Low:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("belt9Low:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("belt10Low:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("belt11Low:1")){
+        ask = false;
+        print = 8;
+    } else if(datas.contains("liftMaxUp:4")){
+            ask = false;
+            print = 8;
+            liftUp = 0;
+        }else if(datas == "ok !\n"){
+        ask = true;
+        print = 8;
+    }else{
         ask = true;
 
     }
@@ -87,7 +133,10 @@ void MainWindow::askData(){
     } else if(ask == false){                                            // checkBelt will activate
         for (QTcpSocket* socket : _sockets) {
             if (socket != sender)
-                socket->write(QByteArray::fromStdString("checkBelt"));
+                socket->write(QByteArray::fromStdString("checkBelt(" + QString::number(print).toStdString() + ")" + ";liftUp(" + QString::number(liftUp).toStdString())+")");
+        }
+        if (intOrder == 8){
+            intOrder = 0;
         }
         ask = true;
     }
@@ -102,4 +151,35 @@ void MainWindow::delay(int secs)                                        // delay
 
 bool MainWindow::getAsk(){                                             // returns bool ask
     return ask;
+}
+
+
+int MainWindow::sort(){
+    if (datas.contains("sortLow1:1") && datas.contains("sortMetal:0") && datas.contains("sortHigh:0") && intOrder == 0 ){
+        intOrder++;
+        return 0;
+    }else if(datas.contains("sortLow1:1") && datas.contains("sortMetal:1") && datas.contains("sortHigh:0") && intOrder == 1){
+        intOrder++;
+        return 1;
+    }else if(datas.contains("sortLow1:1") && datas.contains("sortMetal:1") && datas.contains("sortHigh:1") && intOrder == 2){
+        intOrder++;
+        return 2;
+    }else if(datas.contains("sortLow1:1") && datas.contains("sortMetal:0") && datas.contains("sortHigh:1") && intOrder == 3){
+        intOrder++;
+        return 3;
+    }else if(datas.contains("sortLow1:1") && datas.contains("sortMetal:0") && datas.contains("sortHigh:1") && intOrder == 4){
+        intOrder++;
+        return 4;
+    }else if(datas.contains("sortLow1:1") && datas.contains("sortMetal:1") && datas.contains("sortHigh:0") && intOrder == 5){
+        intOrder++;
+        return 5;
+    }else if(datas.contains("sortLow1:1") && datas.contains("sortMetal:0") && datas.contains("sortHigh:0") && intOrder == 6){
+        intOrder++;
+        return 6;
+    }else if(datas.contains("sortLow1:1") && datas.contains("sortMetal:1") && datas.contains("sortHigh:1") && intOrder == 7){
+        intOrder++;
+        return 7;
+    }else{
+        return 8;
+    }
 }

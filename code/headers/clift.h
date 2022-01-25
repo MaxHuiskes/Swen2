@@ -13,7 +13,7 @@ class cLift : iBelt
 public:
     cLift(int);
     virtual ~cLift();
-public:
+
     QString block = "No block";
     cblock *bl;
 
@@ -29,6 +29,7 @@ public:
     void    resetSensor();
     void    liftDown();
     void    liftUp();
+    int     getMaxUp();
 
 private:
     sensor sensor;
@@ -36,6 +37,8 @@ private:
     cpushrot pushrod;
     int beltnr = 0;
     bool beltOccupied = 0;          // 0 if no occupied, 1 if occupied
+    bool liftStatus = 0;
+    int countUp = 0; // max is 3
 };
 
 #endif // CLIFT_H

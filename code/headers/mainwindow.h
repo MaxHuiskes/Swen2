@@ -3,16 +3,16 @@
 
 #include <QTcpSocket>
 #include <QMainWindow>
+#include <QElapsedTimer>
+#include <QTime>
 
 class cBelt;
-
 class QUIBelt;
-
 class QCheckBox;
-
 class cblock;
-
 class cLift;
+class QUILift;
+class QLabel;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,7 +25,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent);
     ~MainWindow();
-    void checkSorteer();
+    void checkSorteer(int);
 
 public slots:
     void on_clicked();
@@ -52,7 +52,7 @@ private:
     QUIBelt *mQUIbelt1;
     QUIBelt *mQUIbelt2;
     QUIBelt *mQUIbelt3;
-    QUIBelt *mQUILift;
+    QUILift *mQUILift;
     QUIBelt *mQUIbelt5;
     QUIBelt *mQUISort;
     QUIBelt *mQUIStore;
@@ -67,7 +67,22 @@ private:
     cblock *Block;
     cblock *noBlock;
     QTcpSocket  _socket;
-    std::string order;
+    QString order;
+    int checkB;
+    bool wait = 0;
+    int lowPMax = 0;
+    int lowMMax = 0;
+    int highPMax = 0;
+    int highMMax = 0;
+    QLabel *mLabel;
+    QLabel *rightOrder;
+    QString strRightOrder;
+    QLabel *timerPrint;
+    bool clickedLowP = 0;
+    bool clickedHighP = 0;
+    bool clickedLowM = 0;
+    bool clickedHighM = 0;
+    bool reset = 0; // resets block out
 
 };
 #endif // MAINWINDOW_H

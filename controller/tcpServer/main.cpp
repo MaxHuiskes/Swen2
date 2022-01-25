@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     w.show();
     while (true){
         if (w.getAsk() == true)
-            w.delay(5);
+            w.delay(1);
         w.askData();
     }
     w.show();

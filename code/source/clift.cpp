@@ -1,9 +1,12 @@
 #include "headers/clift.h"
 #include "cblock.h"
+#include <QDebug>
 
 cLift::cLift(int nr)
 {
     beltnr = nr;
+    pushrod.in();
+    beltOccupied = 0;
 }
 
 cLift::~cLift(){
@@ -11,18 +14,19 @@ cLift::~cLift(){
 }
 
 void cLift::setBlock(cblock *blck){
-    if (beltOccupied == 0){
+    if (beltOccupied == 0 && countUp < 4){
         block = blck->print;
         bl = blck;
-
+        countUp++;
         toggleMotor();
         //motor.motorNotifySensor(); // is niet nodig is al 5s dela
         sensor.setSensorValue(true);
 
         toggleMotor();
+        // if belt contains a block -> belt is occupied
+        setOccupiedStatus(1);
     }
-    // if belt contains a block -> belt is occupied
-    setOccupiedStatus(1);
+
 }
 
 void cLift::toggleMotor(){
@@ -30,7 +34,7 @@ void cLift::toggleMotor(){
 }
 
 bool cLift::getLiftStatus(){
-    return pushrod.getStatusPushrod();
+    return liftStatus;
 }
 
 void cLift::setNoBlock(cblock* blck){           // set no block on belt
@@ -64,7 +68,13 @@ int cLift::getMotorStatus(){                    // gets and returns motor status
 
 void cLift::liftUp(){
     pushrod.out();
+    liftStatus = pushrod.getStatusPushrod();
 }
 void cLift::liftDown(){
     pushrod.in();
+    countUp = 0;
+    liftStatus = pushrod.getStatusPushrod();
+}
+int cLift::getMaxUp(){
+    return countUp;
 }

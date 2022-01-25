@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QHostAddress>
 #include "clift.h"
+#include "QUILift.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 {
     ui->setupUi(this);
+    rightOrder = new QLabel(this);
+    rightOrder->setText("The right order to come out:\n" + strRightOrder);
+    rightOrder->setGeometry(10,140,600,100);
+
 
     // create connection to server
     _socket.connectToHost(QHostAddress("127.0.0.1"), 4242);
@@ -26,6 +31,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     // start normal program
     ui->menubar->hide();
+
+    lowMMax = 0;
+    lowPMax = 0;
+    highPMax = 0;
+    highMMax = 0;
 
     cBelt *belt1 = new cBelt(1); //  create first belt
     mBelt1 = belt1;
@@ -42,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
     cBelt *belt5 = new cBelt(5); // creat third belt
     mBelt5 = belt5;
 
-    cBelt *belt6 = new cBelt(6); // creat third belt
+    cBelt *belt6 = new cBelt(6); // creat sort belt
     mSort = belt6;
 
     cBelt *belt7 = new cBelt(7); // creat third belt
@@ -78,9 +88,9 @@ MainWindow::MainWindow(QWidget *parent)
     invoerband3->setGeometry(290,30,200,200);
     mQUIbelt3 = invoerband3;
 
-    QUIBelt* invoerband4; // create info for thirth belt
-    invoerband4 = new QUIBelt(this,belt4);
-    invoerband4->setLift();
+    QUILift* invoerband4; // create info for thirth belt
+    invoerband4 = new QUILift(this);
+    invoerband4->setLift(belt4);
     invoerband4->setGeometry(430,30,200,200);
     mQUILift = invoerband4;
 
@@ -88,51 +98,47 @@ MainWindow::MainWindow(QWidget *parent)
     invoerband5 = new QUIBelt(this,belt5);
     invoerband5->setBelt(belt5);
     invoerband5->setGeometry(10,80,200,200);
-    mQUILift = invoerband5;
+    mQUIbelt5 = invoerband5;
 
     QUIBelt* invoerband6; // create info for thirth belt
     invoerband6 = new QUIBelt(this,belt6);
     invoerband6->setBelt(belt6);
     invoerband6->setGeometry(150,80,200,200);
-    mQUILift = invoerband6;
+    mQUISort = invoerband6;
 
     QUIBelt* invoerband7; // create info for thirth belt
     invoerband7 = new QUIBelt(this,belt7);
     invoerband7->setBelt(belt7);
     invoerband7->setGeometry(290,80,200,200);
-    mQUILift = invoerband7;
+    mQUIStore = invoerband7;
 
     QUIBelt* invoerband8; // create info for thirth belt
     invoerband8 = new QUIBelt(this,belt8);
     invoerband8->setBelt(belt8);
     invoerband8->setGeometry(10,130,200,200);
-    mQUILift = invoerband8;
+    mQUIbelt8 = invoerband8;
 
     QUIBelt* invoerband9; // create info for thirth belt
     invoerband9 = new QUIBelt(this,belt9);
     invoerband9->setBelt(belt9);
     invoerband9->setGeometry(150,130,200,200);
-    mQUILift = invoerband9;
+    mQUIbelt9 = invoerband9;
 
     QUIBelt* invoerband10; // create info for thirth belt
     invoerband10 = new QUIBelt(this,belt10);
     invoerband10->setBelt(belt10);
     invoerband10->setGeometry(290,130,200,200);
-    mQUILift = invoerband10;
+    mQUIbelt10 = invoerband10;
 
     QUIBelt* invoerband11; // create info for thirth belt
     invoerband11 = new QUIBelt(this,belt11);
     invoerband11->setBelt(belt11);
     invoerband11->setGeometry(430,130,200,200);
-    mQUILift = invoerband11;
+    mQUIbelt11 = invoerband11;
 
     QPushButton *button = new QPushButton("Set block on first belt", this);  // create push button for block on first belt
     button->connect(button, &QPushButton::pressed, this, &MainWindow::on_clicked);
     button->setGeometry(639,500,121,41);
-
-    QPushButton *buttonCheck = new QPushButton("check", this);
-    buttonCheck->connect(buttonCheck, &QPushButton::pressed, this, &MainWindow::checkBelt);
-    buttonCheck->setGeometry(300,500,121,41);
 
     lowP = new QCheckBox("Low plastic", this); // create check box for plastic low
     lowP->setGeometry(439,500,121,19);
@@ -161,24 +167,77 @@ MainWindow::MainWindow(QWidget *parent)
     check->addButton(highM);
 
     noBlock = new cblock("No Block");
+    mLabel = new QLabel(this);
+    order += "Blocks out of belt:\n";
+    mLabel->setText(order);
+    mLabel->setGeometry(10,180,600,100);
+
 }
 void MainWindow::onReadyRead() // gives status back to sever
 {
     QByteArray datas = _socket.readAll(); //recieved data from server
     qDebug() << datas;
-    if (datas == "ask"){
-        QString s = "belt1Low:" + QString::number(mBelt1->getLowSensorValue())          // low sensor value to controller/server
-                +   ";belt1Metal:" + QString::number(mBelt1->getMetalSensorValue())     // metal sensor value to controller
-                +   ";belt1High:" + QString::number(mBelt1->getHighSensorValue())       // high sensor value to controller
-                +   ";belt2Low:" + QString::number(mBelt2->getLowSensorValue())         // low sensor value to controller
-                +   ";belt3Low:" + QString::number(mBelt3->getLowSensorValue());        // low sensor value to controller
+    if (datas.contains("Low plastic; Low metal; High metal; High plastic; High plastic; Low metal; Low plastic; High metal;")){
 
+        strRightOrder = QString::fromStdString(datas.toStdString());
+        strRightOrder.remove("ask");
+        rightOrder->setText("The right order to come out:\n" + strRightOrder );
+    }
+
+    if(datas.contains("liftUp(0)")){
+        mLift->liftDown();
+    }else if(datas.contains("liftUp(1)")){
+        mLift->liftUp();
+    }
+
+    if (datas == "ask"){
+        QString s = "belt1Low:"    + QString::number(mBelt1->getLowSensorValue())           // low sensor value to controller/server
+                +   ";belt1Metal:" + QString::number(mBelt1->getMetalSensorValue())         // metal sensor value to controller
+                +   ";belt1High:"  + QString::number(mBelt1->getHighSensorValue())          // high sensor value to controller
+                +   ";belt2Low:"   + QString::number(mBelt2->getLowSensorValue())           // low sensor value to controller
+                +   ";belt3Low:"   + QString::number(mBelt3->getLowSensorValue())           // low sensor value to controller
+                +   ";liftLow:"    + QString::number(mLift->getLowSensorValue())            // low sensor value to controller
+                +   ";liftStatus:" + QString::number(mLift->getLiftStatus())                // pushrod sensor value to controller
+                +   ";belt5Low:"   + QString::number(mBelt5->getLowSensorValue())           // low sensor value to controller
+                +   ";sortLow1:"   + QString::number(mSort->getLowSensorValue())            // low sensor value to controller
+                +   ";sortMetal:"  + QString::number(mSort->getMetalSensorValue())          // metal sensor value to controller
+                +   ";sortHigh:"   + QString::number(mSort->getHighSensorValue())           // high sensor value to controller
+                +   ";storeLow:"   + QString::number(mStore->getLowSensorValue())           // low sensor value to controller
+                +   ";belt8Low:"   + QString::number(mBelt8->getLowSensorValue())           // low sensor value to controller
+                +   ";belt9Low:"   + QString::number(mBelt9->getLowSensorValue())           // low sensor value to controller
+                +   ";belt10Low:"  + QString::number(mBelt10->getLowSensorValue())          // low sensor value to controller
+                +   ";liftMaxUP:"  + QString::number(mLift->getMaxUp())
+                +   ";belt11Low:"  + QString::number(mBelt11->getLowSensorValue());         // low sensor value to controller
         _socket.write(QByteArray::fromStdString(s.toStdString()));
     } else if (datas == "Low plastic; Low metal; High metal; High plastic; High plastic; Low metal; Low plastic; High metal;" ) {
         _socket.write(QByteArray("ok !\n")); // sends status client to server
-        order = datas.toStdString();
-    } else if (datas == "checkBelt"){
-        checkBelt();                        // checks belt to next belt
+    } else if (datas.contains( "checkBelt(0)")){
+        checkB = 0;
+        checkBelt();                          // checks belt to next belt
+    } else if (datas.contains( "checkBelt(1)")){
+        checkB = 1;
+        checkBelt();                         // checks belt to next belt
+    } else if (datas .contains( "checkBelt(2)")){
+        checkB = 2;
+        checkBelt();                         // checks belt to next belt
+    } else if (datas .contains( "checkBelt(3)")){
+        checkB = 3;
+        checkBelt();                         // checks belt to next belt
+    } else if (datas .contains( "checkBelt(4)")){
+        checkB = 4;
+        checkBelt();                         // checks belt to next belt
+    } else if (datas .contains( "checkBelt(5)")){
+        checkB = 5;
+        checkBelt();                         // checks belt to next belt
+    } else if (datas .contains( "checkBelt(6)")){
+        checkB = 6;
+        checkBelt();                         // checks belt to next belt
+    } else if (datas .contains( "checkBelt(7)")){
+        checkB = 7;
+        checkBelt();                         // checks belt to next belt
+    } else if (datas .contains( "checkBelt(8)")){
+        checkB = 8;
+        checkBelt();                         // checks belt to next belt
     }
 }
 
@@ -193,29 +252,67 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_clicked()  // click on button
 {
-    if (mBelt1->getBlockCount() < 8)
-        mQUIbelt1->setLabel(Block);
+    if (reset == 1){
+        reset = 0;
+        order = "Blocks out of belt:\n";
+        mLabel->setText(order);
+    }
+    if(mBelt1->getBlockCount() < 8){
+        if(lowPMax !=2 && clickedLowP == 1){
+            lowPMax++;
+            mQUIbelt1->setLabel(Block);
+        }
+        if(highPMax !=2 && clickedHighP == 1){
+            highPMax++;
+            mQUIbelt1->setLabel(Block);
+        }
+        if(lowMMax !=2 && clickedLowM == 1){
+            lowMMax++;
+            mQUIbelt1->setLabel(Block);
+        }
+        if(highMMax !=2 && clickedHighM == 1){
+            highMMax++;
+            mQUIbelt1->setLabel(Block);
+        }
+    }
 }
 void MainWindow::on_lowP_clicked() // select block
 {
+    clickedLowP = 1;
+    clickedHighP = 0;
+    clickedLowM = 0;
+    clickedHighM = 0;
     Block = new cblock("Low plastic");
 }
 void MainWindow::on_highP_clicked() // select block
 {
+    clickedLowP = 0;
+    clickedHighP = 1;
+    clickedLowM = 0;
+    clickedHighM = 0;
     Block = new cblock("High plastic");
 }
 void MainWindow::on_lowM_clicked() // select block
 {
+    clickedLowP = 0;
+    clickedHighP = 0;
+    clickedLowM = 1;
+    clickedHighM = 0;
     Block = new cblock("Low metal");
 }
 void MainWindow::on_highM_clicked() // select block
 {
+    clickedLowP = 0;
+    clickedHighP = 0;
+    clickedLowM = 0;
+    clickedHighM = 1;
     Block = new cblock("High metal");
 }
 void MainWindow::checkBelt(){
 
-    if (mBelt11->getOccupiedStatus() == 1 && mLift->getOccupiedStatus() == 0 && mLift->getLiftStatus() == 1 ){ // looks if belt is occupied
-        mQUILift->setLabel(mBelt11->bl);
+    if (mBelt11->getOccupiedStatus() == 1 && mLift->getOccupiedStatus() == 0 && mLift->getLiftStatus() == 1 && mLift->getMaxUp() < 4){ // looks if belt is occupied
+        wait = 1;
+        mQUILift->setLiftLabel(mBelt11->bl);
         mQUIbelt11->setNoBlock(noBlock);     // set belt to no block
         mBelt11->resetSensor();              // reset sensor value
         mBelt11->setOccupiedStatus(0);       // set occupied to 0
@@ -241,31 +338,31 @@ void MainWindow::checkBelt(){
         mBelt8->resetSensor();              // reset sensor value
     }
 
-    if (mStore->getOccupiedStatus() == 1 && mBelt8->getOccupiedStatus() == 0 /*|| mStore->getNrblk() && mBelt8->getOccupiedStatus()*/ ){ // looks if belt is occupied
-        mQUIbelt8->setLabel(mStore->bl);
+    if (mStore->getOccupiedStatus() == 1 && mBelt2->getOccupiedStatus() == 0 /*|| mStore->getNrblk() <= 4 && mBelt3->getOccupiedStatus() == 0*/ ){ // looks if belt is occupied
+        mQUIbelt2->setLabel(mStore->bl);
         mQUIStore->setNoBlock(noBlock);     // set belt to no block
         mStore->setOccupiedStatus(0);       // set occupied to 0
         mStore->resetSensor();              // reset sensor value
     }
 
-    checkSorteer();
+    checkSorteer(checkB);
 
     if (mBelt5->getOccupiedStatus() == 1 && mSort->getOccupiedStatus() == 0 ){ // looks if belt is occupied
-        mQUISort->setLabel(mLift->bl);
-        mQUISort->setNoBlock(noBlock);     // set belt to no block
+        mQUISort->setLabel(mBelt5->bl);
+        mQUIbelt5->setNoBlock(noBlock);     // set belt to no block
         mBelt5->setOccupiedStatus(0);       // set occupied to 0
         mBelt5->resetSensor();              // reset sensor value
     }
 
-    if (mLift->getOccupiedStatus() == 1 && mBelt5->getOccupiedStatus() == 0){ // looks if belt is occupied
+    if (mLift->getOccupiedStatus() == 1 && mBelt5->getOccupiedStatus() == 0 && wait == 0){ // looks if belt is occupied
         mQUIbelt5->setLabel(mLift->bl);
-        mQUIbelt5->setNoBlock(noBlock);     // set belt to no block
+        mQUILift->setNoBlock(noBlock);     // set belt to no block
         mLift->setOccupiedStatus(0);       // set occupied to 0
         mLift->resetSensor();              // reset sensor value
     }
 
-    if (mBelt3->getOccupiedStatus() == 1 && mLift->getOccupiedStatus() == 0  && mLift->getLiftStatus() == 0){ // looks if belt is occupied
-        mQUILift->setLabel(mBelt3->bl);
+    if (mBelt3->getOccupiedStatus() == 1 && mLift->getOccupiedStatus() == 0 && mLift->getLiftStatus() == 0){ // looks if belt is occupied
+        mQUILift->setLiftLabel(mBelt3->bl);
         mQUIbelt3->setNoBlock(noBlock);     // set belt to no block
         mBelt3->setOccupiedStatus(0);       // set occupied to 0
         mBelt3->resetSensor();              // reset sensor value
@@ -285,8 +382,45 @@ void MainWindow::checkBelt(){
         mBelt1->setOccupiedStatus(0);       // set occupied to 0
 
     }
+    wait = 0;
 }
 
-void MainWindow::checkSorteer(){
-
+void MainWindow::checkSorteer(int sort){
+    cblock *blk = mSort->bl;
+    if(sort < 8){
+        if(mSort->getOccupiedStatus() == 1){
+            if (sort != 0 && sort < 8){
+                order += ", ";
+            }
+            order += mSort->block;             // block is out
+            mLabel->setText(order);            // set label block out of belt
+            mQUISort->setNoBlock(noBlock);     // set no block on belt
+            mSort->setOccupiedStatus(0);       // set occupied to 0
+            mSort->resetSensor();              // reset sensor
+            mBelt1->blockOut();                // takes block from belt
+            if (sort == 7){
+                clickedLowP = 0;
+                clickedHighP = 0;
+                clickedLowM = 0;
+                clickedHighM = 0;
+                highMMax = 0;
+                highPMax = 0;
+                lowMMax = 0;
+                lowPMax = 0;
+                reset = 1;
+            }
+        }
+    }else if(sort == 8){
+        if (mSort->getOccupiedStatus() == 1 && mBelt8->getOccupiedStatus() == 0){
+            mQUIbelt8->setLabel(blk);    // set block on next belt
+            mQUISort->setNoBlock(noBlock);     // set no block on belt
+            mSort->setOccupiedStatus(0);       // set occupied to 0
+            mSort->resetSensor();              // reset sensor
+        }else if(mSort->getOccupiedStatus() == 1 && mStore->getOccupiedStatus() == 0){
+            mQUIStore->setLabel(blk);    // set block on next belt
+            mQUISort->setNoBlock(noBlock);     // set no block on belt
+            mSort->setOccupiedStatus(0);       // set occupied to 0
+            mSort->resetSensor();              // reset sensor
+        }
+    }
 }

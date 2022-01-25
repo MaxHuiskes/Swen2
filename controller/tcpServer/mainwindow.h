@@ -25,15 +25,18 @@ public slots:
     void onReadyRead();
     void delay(int);
     bool getAsk();
+    int sort();
 
 private:
     Ui::MainWindow *ui;
     QTcpServer  _server;
     QList<QTcpSocket*>  _sockets;
     QByteArray datas;
-    QString log;
     bool ask;
     QString order;
+    int intOrder = 0;
+    int print;
+    int liftUp = 0;
 
 };
 

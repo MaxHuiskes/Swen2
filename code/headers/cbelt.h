@@ -34,6 +34,7 @@ public:
     int     getHighSensorValue();
     int     getMetalSensorValue();
     void    resetSensor();
+    void    setMaxBlockCount(bool);
 
 signals:
     void motorChange();
@@ -47,6 +48,7 @@ private:
     int beltnr = 0;
     int blockCount = 0;             // max block 8
     bool beltOccupied = 0;          // 0 if no occupied, 1 if occupied
+    bool noMoreBlock = 0;
 };
 
 #endif // CBELT_H
