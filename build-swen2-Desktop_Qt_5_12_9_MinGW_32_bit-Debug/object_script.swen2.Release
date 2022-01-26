@@ -1,0 +1,14 @@
+release/ibelt.o
+release/quibelt.o
+release/cbelt.o
+release/quibelt.o
+release/cblock.o
+release/clift.o
+release/cmotor.o
+release/cpushrot.o
+release/main.o
+release/mainwindow.o
+release/sensor.o
+release/moc_cmotor.o
+release/moc_mainwindow.o
+release/moc_quibelt.o

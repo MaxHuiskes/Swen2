@@ -1,23 +1,44 @@
 #ifndef CLIFT_H
 #define CLIFT_H
+#include "ibelt.h"
 #include "cmotor.h"
 #include "cpushrot.h"
 #include "sensor.h"
 
+class cblock;
 
-class cLift
+// edit: afleiden van IBelt
+class cLift : iBelt
 {
 public:
-    cLift();
-public:
-    void activate(); //bij afgeven van blokje om lift omlaag te laten gaan
-    void checkDown(); //checken of de lift beneden is (zodat je de pushrod niet molt en ie ook echt wertkt)
-    void goUp(); //wanneer de lift beneden is pushrod activeren en omhoog gaan
-    bool isBlok; //of er een blokje op zit
+    cLift(int);
+    virtual ~cLift();
+
+    QString block = "No block";
+    cblock *bl;
+
+    bool    getLiftStatus();
+    void    toggleMotor();
+    void    setBlock(cblock * blck);
+    int     getBeltNr();
+    int     getLowSensorValue();
+    void    setNoBlock(cblock *blck);
+    bool    getOccupiedStatus();
+    void    setOccupiedStatus(bool);
+    int     getMotorStatus();
+    void    resetSensor();
+    void    liftDown();
+    void    liftUp();
+    int     getMaxUp();
+
 private:
     sensor sensor;
     cmotor motor;
     cpushrot pushrod;
+    int beltnr = 0;
+    bool beltOccupied = 0;          // 0 if no occupied, 1 if occupied
+    bool liftStatus = 0;
+    int countUp = 0; // max is 3
 };
 
 #endif // CLIFT_H
