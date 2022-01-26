@@ -15,6 +15,7 @@ public:
     void setLift(cLift*);
     void setNoBlock(cblock*);
     void setLiftLabel(cblock*);
+    void updateLiftStatus(cblock*);
 
 private:
     cLift  *mLift;

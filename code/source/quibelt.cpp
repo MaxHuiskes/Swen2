@@ -50,13 +50,4 @@ void QUIBelt::setNoBlock(cblock *block){      // set no block and change belt in
     mLabel.setText(beltinfo);
 }
 
-void QUIBelt::updateLabel(){
-    QString beltinfo ="Conveyor belt number " +
-            QString::number(mBelt->getBeltNr()) +
-            '\n' + "Block on Conveyor belt: " +
-            '\n' + mBelt->block+ '\n' +
-            "Motor on: " + QString::number(mBelt->getMotorStatus()) ;
-
-    mLabel.setText(beltinfo);
-}
 

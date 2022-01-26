@@ -17,7 +17,7 @@ void QUILift::setLift(cLift *lift){      // set belt info to mainwindow
     QString beltinfo ="Conveyor belt number " +
             QString::number(mLift->getBeltNr()) + '\n' +
             "Block on Conveyor belt: " +
-            '\n' + mLift->block + '\n' ;
+            '\n' + mLift->block + '\n' + "LiftStatus: " +QString::number( mLift->getLiftStatus()) ;
 
     mLabel.setText(beltinfo);
 }
@@ -31,7 +31,7 @@ void QUILift::setLiftLabel(cblock *block){      // set block and change belt inf
         QString beltinfo ="Conveyor belt number " +
                 QString::number(mLift->getBeltNr()) +
                 '\n' + "Block on Conveyor belt: " +
-                '\n' + mLift->bl->print+ '\n' ;
+                '\n' + mLift->bl->print+ '\n' + "LiftStatus: " +QString::number( mLift->getLiftStatus()) ;
 
         mLabel.setText(beltinfo);
     }
@@ -43,7 +43,17 @@ void QUILift::setNoBlock(cblock *block){      // set no block and change belt in
     QString beltinfo ="Conveyor belt number " +
             QString::number(mLift->getBeltNr()) +
             '\n' + "Block on Conveyor belt: " +
-            '\n' + block->print+ '\n' ;
+            '\n' + block->print+ '\n' + "LiftStatus: " +QString::number( mLift->getLiftStatus());
 
+    mLabel.setText(beltinfo);
+}
+
+
+void QUILift::updateLiftStatus(cblock *block){      // set no block and change belt info
+    QString beltinfo ="Conveyor belt number " +
+            QString::number(mLift->getBeltNr()) +
+            '\n' + "Block on Conveyor belt: " +
+            '\n' + block->print + '\n' +
+            "LiftStatus: " + QString::number( mLift->getLiftStatus());
     mLabel.setText(beltinfo);
 }

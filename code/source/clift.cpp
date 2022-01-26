@@ -19,7 +19,7 @@ void cLift::setBlock(cblock *blck){
         bl = blck;
         countUp++;
         toggleMotor();
-        //motor.motorNotifySensor(); // is niet nodig is al 5s dela
+
         sensor.setSensorValue(true);
 
         toggleMotor();

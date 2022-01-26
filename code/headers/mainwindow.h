@@ -83,6 +83,7 @@ private:
     bool clickedLowM = 0;
     bool clickedHighM = 0;
     bool reset = 0; // resets block out
+    bool wait2 = 0;
 
 };
 #endif // MAINWINDOW_H

@@ -35,6 +35,9 @@ public:
     int     getMetalSensorValue();
     void    resetSensor();
     void    setMaxBlockCount(bool);
+    int     getLow2SensorValue();
+    int     getLow3SensorValue();
+    void    setLow23SensorValue(bool,bool);
 
 signals:
     void motorChange();
@@ -43,6 +46,8 @@ private:
     QWidget *parent;
     cmotor motor;
     sensor lowSensor;
+    sensor *low2Sensor;
+    sensor *low3Sensor;
     sensor *highSensor = nullptr;
     sensor *metalSensor = nullptr;
     int beltnr = 0;

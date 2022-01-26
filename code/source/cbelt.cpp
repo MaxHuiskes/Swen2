@@ -10,14 +10,22 @@ cBelt::cBelt(int nr)
     if(beltnr == 1 || beltnr == 6){
         highSensor = new sensor;
         metalSensor = new sensor;
+        if (beltnr == 6){
+            low2Sensor = new sensor;
+            low3Sensor = new sensor;
+        }
     }
 
 }
 
 cBelt::~cBelt(){
-    if (beltnr == 1){
+    if (beltnr == 1 || beltnr == 6){
         delete highSensor;
         delete metalSensor;
+        if (beltnr == 6){
+            delete low2Sensor;
+            delete low3Sensor;
+        }
     }
 }
 
@@ -94,6 +102,12 @@ void cBelt::setOccupiedStatus(bool status){     // sets if belt is occupied
 int cBelt::getLowSensorValue(){                 // returns low sensor value
     return lowSensor.getSensorValue();
 }
+int cBelt::getLow2SensorValue(){                 // returns low sensor value
+    return low2Sensor->getSensorValue();
+}
+int cBelt::getLow3SensorValue(){                 // returns low sensor value
+    return low3Sensor->getSensorValue();
+}
 
 int cBelt::getHighSensorValue(){                // returns high sensor value
     return highSensor->getSensorValue();
@@ -104,9 +118,13 @@ int cBelt::getMetalSensorValue(){               // returns metel sensor value
 
 void cBelt::resetSensor(){                      // reset all sensor value
     lowSensor.setSensorValue(0);
-    if (beltnr == 1){
+    if (beltnr == 1 || beltnr == 6){
         highSensor->setSensorValue(0);
         metalSensor->setSensorValue(0);
+        if (beltnr == 6) {
+            low2Sensor->setSensorValue(0);
+            low3Sensor->setSensorValue(0);
+        }
     }
 
 }
@@ -128,4 +146,13 @@ int cBelt::getBlockCount(){
 
 void cBelt::setMaxBlockCount(bool maxBlock){
     noMoreBlock = maxBlock;
+}
+
+void cBelt::setLow23SensorValue(bool nr, bool value){
+    if (nr == 0 ){
+        low2Sensor->setSensorValue(value);
+    }else if (nr == 1){
+        low3Sensor->setSensorValue(value);
+    }
+
 }
