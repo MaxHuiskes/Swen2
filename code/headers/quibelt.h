@@ -21,9 +21,6 @@ private:
     QLabel mLabel;
     cBelt  *mBelt;
 
-public slots:
-    void updateLabel();
-
 };
 
 #endif // QUIBELT_H

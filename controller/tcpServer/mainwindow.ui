@@ -28,7 +28,7 @@
     </property>
     <property name="text">
      <string>Server online!!
-Connectet to client </string>
+Connected to client </string>
     </property>
    </widget>
   </widget>

@@ -3,9 +3,7 @@
 
 #include "ibelt.h"
 #include "sensor.h"
-#include "cpushrot.h"
 #include "cmotor.h"
-#include <QEvent>
 #include <QString>
 
 class cblock;
@@ -38,9 +36,6 @@ public:
     int     getLow2SensorValue();
     int     getLow3SensorValue();
     void    setLow23SensorValue(bool,bool);
-
-signals:
-    void motorChange();
 
 private:
     QWidget *parent;

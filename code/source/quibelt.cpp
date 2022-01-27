@@ -1,6 +1,5 @@
 #include "quibelt.h"
 #include "cbelt.h"
-#include "clift.h"
 #include "cblock.h"
 #include <QDebug>
 QUIBelt::QUIBelt(QWidget *parent, cBelt* belt)
