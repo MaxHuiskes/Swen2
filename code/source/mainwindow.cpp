@@ -419,10 +419,6 @@ void MainWindow::checkSorteer(int sort){
             mSort->resetSensor();              // reset sensor
             mBelt1->blockOut();                // takes block from belt
             if (sort == 7){
-                clickedLowP = 0;
-                clickedHighP = 0;
-                clickedLowM = 0;
-                clickedHighM = 0;
                 highMMax = 0;
                 highPMax = 0;
                 lowMMax = 0;

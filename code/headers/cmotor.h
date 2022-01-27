@@ -1,7 +1,6 @@
 #ifndef CMOTOR_H
 #define CMOTOR_H
 #include <QWidget>
-#include <QLabel>
 
 class cmotor : public QWidget
 {

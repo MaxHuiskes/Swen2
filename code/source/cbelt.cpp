@@ -31,7 +31,6 @@ cBelt::~cBelt(){
 
 void cBelt::toggleMotor(){                      // toggle motor
     motor.toggleMotor();
-   // emit motorChange();
 }
 
 
@@ -47,7 +46,6 @@ void cBelt::setBlock(cblock * blck){            // set block on belt
         bl = blck;
 
         toggleMotor();
-        //motor.motorNotifySensor(); // is niet nodig is al 5s delay
 
         if (beltnr == 1) {
             blockCount++;                       // add 1 to blockCount max is eight
