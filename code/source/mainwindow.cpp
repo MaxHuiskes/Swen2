@@ -269,27 +269,29 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_clicked()  // click on button
 {
-    if (reset == 1){
-        reset = 0;
-        order = "Blocks out of belt:\n";
-        mLabel->setText(order);
-    }
-    if(mBelt1->getBlockCount() < 8){
-        if(lowPMax !=2 && clickedLowP == 1){
-            lowPMax++;
-            mQUIbelt1->setLabel(Block);
+    if (mBelt1->getOccupiedStatus() == 0){
+        if (reset == 1){
+            reset = 0;
+            order = "Blocks out of belt:\n";
+            mLabel->setText(order);
         }
-        if(highPMax !=2 && clickedHighP == 1){
-            highPMax++;
-            mQUIbelt1->setLabel(Block);
-        }
-        if(lowMMax !=2 && clickedLowM == 1){
-            lowMMax++;
-            mQUIbelt1->setLabel(Block);
-        }
-        if(highMMax !=2 && clickedHighM == 1){
-            highMMax++;
-            mQUIbelt1->setLabel(Block);
+        if(mBelt1->getBlockCount() < 8){
+            if(lowPMax !=2 && clickedLowP == 1){
+                lowPMax++;
+                mQUIbelt1->setLabel(Block);
+            }
+            if(highPMax !=2 && clickedHighP == 1){
+                highPMax++;
+                mQUIbelt1->setLabel(Block);
+            }
+            if(lowMMax !=2 && clickedLowM == 1){
+                lowMMax++;
+                mQUIbelt1->setLabel(Block);
+            }
+            if(highMMax !=2 && clickedHighM == 1){
+                highMMax++;
+                mQUIbelt1->setLabel(Block);
+            }
         }
     }
 }
@@ -429,13 +431,13 @@ void MainWindow::checkSorteer(int sort){
     }else if(sort == 8){
         if (mSort->getOccupiedStatus() == 1 && mBelt8->getOccupiedStatus() == 0){
             mSort->setLow23SensorValue(1,1);
-            mQUIbelt8->setLabel(blk);    // set block on next belt
+            mQUIbelt8->setLabel(blk);          // set block on next belt
             mQUISort->setNoBlock(noBlock);     // set no block on belt
             mSort->setOccupiedStatus(0);       // set occupied to 0
             mSort->resetSensor();              // reset sensor
         }else if(mSort->getOccupiedStatus() == 1 && mStore->getOccupiedStatus() == 0){
             mSort->setLow23SensorValue(0,1);
-            mQUIStore->setLabel(blk);    // set block on next belt
+            mQUIStore->setLabel(blk);          // set block on next belt
             mQUISort->setNoBlock(noBlock);     // set no block on belt
             mSort->setOccupiedStatus(0);       // set occupied to 0
             mSort->resetSensor();              // reset sensor
