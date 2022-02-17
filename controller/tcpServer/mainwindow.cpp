@@ -69,7 +69,6 @@ void MainWindow::onReadyRead()                                          // check
     }else if(datas.contains("belt11Low:0")){
         liftUp = 0;
     }
-    //liftLow:0;
 
     if (datas.contains("sortLow1:1")){
         print = sort();
@@ -154,7 +153,7 @@ bool MainWindow::getAsk(){                                             // return
 }
 
 
-int MainWindow::sort(){
+int MainWindow::sort(){                                                // sort order
     if (datas.contains("sortLow1:1") && datas.contains("sortMetal:0") && datas.contains("sortHigh:0") && intOrder == 0 ){
         intOrder++;
         return 0;

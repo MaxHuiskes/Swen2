@@ -32,7 +32,7 @@ private:
     QTcpServer  _server;
     QList<QTcpSocket*>  _sockets;
     QByteArray datas;
-    bool ask;
+    bool ask;           // if ask is 1 asking sensor info
     QString order;
     int intOrder = 0;
     int print;
@@ -40,6 +40,8 @@ private:
 
 };
 
+
+// sites used to create server client connection
 // https://riptutorial.com/qt/example/29874/tcp-server
 // https://riptutorial.com/qt/example/29873/tcp-client
 

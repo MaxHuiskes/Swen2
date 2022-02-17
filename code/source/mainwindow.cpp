@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // create connection to server
     _socket.connectToHost(QHostAddress("127.0.0.1"), 4242);
-    connect(&_socket, SIGNAL(readyRead()), this, SLOT(onReadyRead())); // creates connection with server/controller to recieve data
+    connect(&_socket, SIGNAL(readyRead()), this, SLOT(onReadyRead())); // creates connection with server/controller to receive data
 
     // start normal program
     ui->menubar->hide();

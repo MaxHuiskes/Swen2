@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
 
-void delay(int);
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -9,7 +8,7 @@ int main(int argc, char *argv[])
     w.show();
     while (true){
         if (w.getAsk() == true)
-            w.delay(1);
+            w.delay(2);
         w.askData();
     }
     w.show();
